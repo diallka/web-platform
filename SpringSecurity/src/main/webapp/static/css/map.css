@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+}
+
+#map {
+  height: 430px;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;  /*permet de center la div au milieu de la page */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+   margin-top:10px;
+}
+
+
+.maps-frame {
+  height: 430px;
+  width: 80%;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton a {
+  color: #757575;
+  display: inline-block;
+  height: 100%;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton {
+  padding: 0;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton.selected a {
+  color: #03a9f4;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton a:focus {
+  text-decoration: none;
+}
+
+p.top-desc {
+  padding: 1em 1em .1em 1em;
+}
+
+p.bottom-desc {
+  padding: 0em 1em 1em 1em;
+}
+//**********************************************
+body {
+	background-color: #eee;
+	font: helvetica;
+}
+
+#container {
+	width: 500px;
+	background-color: #fff;
+	margin: 30px auto;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 5px;
+}
+
+.green {
+	font-weight: bold;
+	color: green;
+}
+
+.message {
+	margin-bottom: 10px;
+}
+
+label {
+	width: 70px;
+	display: inline-block;
+}
+
+.hide {
+	display: none;
+}
+
+.error {
+	color: red;
+	font-size: 0.8em;
+}
+//***********************************
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+	background-color: #f9f9f9
+}

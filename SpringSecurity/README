@@ -1,0 +1,13 @@
+Spring mvc
+Spring security
+Hibernate
+Mysql
+jsr303 validation
+configuration springSecurity, webmvc, hibernate par annotation
+
+Tomcat 8 
+Java 7 (1.7)
+Servlet (Dynamic Web Module) 3.1
+
+Tutoriel de base: http://websystique.com/spring-security/spring-security-4-password-encoder-bcrypt-example-with-hibernate/
+
