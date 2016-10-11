@@ -1,14 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Bienvenue dans votre espace personnel</title>
-	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Bienvenue dans votre espace personnel</title>
+<link href="<c:url value='/static/css/bootstrap.css' />"
+	rel="stylesheet"></link>
+<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <style>
 body {
 	background-color: #eee;
@@ -90,20 +92,19 @@ label {
 </head>
 <body>
 	<div class="success">
-	<div style="float:right">
-		<a href="<c:url value="/accueil" />">Accueil</a>
+		<div style="float: right">
+			<a href="<c:url value="/accueil" />">Accueil</a>
+		</div>
+		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br /> Test:
+		${test} <br /> <a href="<c:url value="/logout" />">Déconnexion</a>
 	</div>
-		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br/>
-		Test: ${test} <br/>
-		<a href="<c:url value="/logout" />">Déconnexion</a>
-	</div>
-	
+
 	<!-- ********************************************************************************* -->
 	<div id="map"></div>
 	<!-- ************************************************************************************** -->
 
 	<div id="container">
-		
+
 		<!-- ************************************************************ -->
 		<div id="historique"></div>
 
@@ -112,10 +113,10 @@ label {
 		</div>
 		<br> <br>
 		<!-- ************************************************************* -->
-		
-	<script>
+
+		<script>
     var map;
-    var details;
+    var details ;
     var details2 = "";
     var km;
     var id;
@@ -124,15 +125,16 @@ label {
     var destination; 
     var marker1;
     var marker2;
+    var recupMarker; //Markers avec coordonées recupérées en bdd viaAjax
 
     function initMap() {
-    		var details ="";
+    		//var details ="";
             var lille = {lat: 50.634032, lng: 3.061574};
             var bruxelles = {lat: 50.847151, lng: 4.355476};
               map = new google.maps.Map(document.getElementById('map'), {
               center: lille,
               scrollwheel: false,
-              zoom: 10
+              zoom: 12
             });
               
               //On gere la géolocalisation
@@ -171,33 +173,80 @@ label {
                       animation: google.maps.Animation.DROP //Animation marqueur
                   });
                   var infowindow2 = new google.maps.InfoWindow({
-                      content: '${abdoul.firstName}'
-                      
-                    	   			
+                      content: '${abdoul.firstName}'	   			
                   });
                   marker2.addListener('click', function () {
                       infowindow2.open(map, marker2);
                       $("#details").html(details); //Au clic on affiche le détail définit en dessous
+                      console.log(details);
                   });
                   //On définit les détails qu'on revoit dans la div correspondante de notre JSP
-                  details = details   +'Nom: ${listUsers} <br/>'
-                  					  +'Prenom: ${abdoul.lastName} <br/>'
-                  					  +'Age: ${abdoul.age} <br/>'
-                					  +'E-mail: ${abdoul.email} <br/>'
-					                  +'Pays:  ${abdoul.country} <br/>'
-					                  +'Lattitude:  ${abdoul.latitude} <br/>'
-					                  +'Longitude:  ${abdoul.longitude} <br/>'
+//                   details = details   +'Nom: ${listUsers} <br/>'
+//                   					  +'Prenom: ${abdoul.lastName} <br/>'
+//                   					  +'Age: ${abdoul.age} <br/>'
+//                 					  +'E-mail: ${abdoul.email} <br/>'
+// 					                  +'Pays:  ${abdoul.country} <br/>'
+// 					                  +'Lattitude:  ${abdoul.latitude} <br/>'
+// 					                  +'Longitude:  ${abdoul.longitude} <br/>'
               //*****************************************************************************
+              
+					                //On lance une requete ajax pour recuperer les données
+					          		$.ajax({
+					          			type : "GET",
+					          			contentType : "application/json",
+					          			url : "${pageContext.request.contextPath}/map/users/liste",
+					          			dataType : 'json',
+					          			//timeout : 100000,
+					          			//Si tout se passe bien on le gère ici
+					          			success : function(donnees) {
+					          				
+					          				  //pour chaque donnée on récupère l'index et l'utilisateur correspondant
+					          				  $.each(donnees, function(index, user) {
+					          					
+					          			             	console.log(user.lastName, user.latitude, user.longitude);
+					          			                recupMarker = new google.maps.Marker({
+					          			                position: {lat: user.latitude, lng: user.longitude},
+					          			                map: map,
+					          			                title: '',
+					          			              	animation: google.maps.Animation.DROP, //Animation marqueurs
+					          			              	draggable: true,
+					          			                icon: '<c:url value="/static/images/car.png"/>'
+					          			                
+					          			            });
+					          			              
+					          			              recupMarker.addListener('click', function () {
+					          		                      $("#details").html(details); //Au clic on affiche le détail définit en dessous
+					          		                    	console.log(details);
+					          		                      //detail à revoir
+					          		                    	details = +details + user.lastName 
+	          		                    					  + user.latitude
+	          		                    					  + user.longitude
+					          		                  });
+					          			         });  
+					          				  
+					          			},
+					          			//S'il y a erreur ...
+					          			error : function(e) {
+					          				console.log("ERROR: ", e);
+					          				display(e);
+					          			},
+					          			//Quand tout est fini
+					          			done : function(e) {
+					          				console.log("DONE");
+					          			}
+					          		});
+					                  
+			//*******************************************************************************
 
           }
 
     </script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC95GpgAzzfx4qDEDw-_G76aMlpwtvoSc&callback=initMap"
-		async defer>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC95GpgAzzfx4qDEDw-_G76aMlpwtvoSc&callback=initMap"
+			async defer>
     </script>
-	<!-- ***************************************************************************** -->
-	<script type="text/javascript">
+		<!-- ***************************************************************************** -->
+		<script type="text/javascript">
    
     $(document).ready(function() {
        
@@ -247,6 +296,5 @@ label {
      
    
   </script>
-	
 </body>
 </html>

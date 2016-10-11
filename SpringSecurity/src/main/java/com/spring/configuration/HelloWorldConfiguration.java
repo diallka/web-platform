@@ -1,9 +1,16 @@
 package com.spring.configuration;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -29,6 +36,17 @@ public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
 		registry.viewResolver(viewResolver);
 	}
 	
+	//A configurer pour que Jackson mapper fonctionne
+	 @Override
+	    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+	        final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+	        final ObjectMapper objectMapper = new ObjectMapper();
+	        //objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+	       //converter.setObjectMapper(objectMapper);
+	        converters.add(converter);
+	        super.configureMessageConverters(converters);
+	    }
+	
 	/*
      * On configure le dossier source des resserces internes tel CSS/ Javascript etc...
      *
@@ -47,5 +65,5 @@ public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
         registry.addConverter(roleToUserProfileConverter);
     }
     
-    
+
 }

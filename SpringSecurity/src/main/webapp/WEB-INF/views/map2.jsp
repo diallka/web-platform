@@ -29,10 +29,10 @@
 		<div id="reponse">${reponse}</div>
 	</div>
 	<br/>
-	<h2>Générer un Random depuis un tableau</h2>
-		<input type="submit" id="randomPerson" value="C'est parti !" /><br />
+	<h2>Récupérer les utilisateurs en bdd</h2>
+		<input type="submit" id="recupUsers" value="C'est parti !" /><br />
 		<br />
-		<div id="personResponse"></div>
+		<div id="usersResponse"></div>
 	<br/>
 	<!-- ************************************************************* -->
 	<div id="map"></div>
@@ -117,27 +117,47 @@
 				                  +'Longitude:  ${abdoul.longitude} <br/>'
 	</script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		// Faire un random par un request AJAX 
-// 	      $('#randomPerson').click(function() {
-// 	        $.getJSON('${pageContext.request.contextPath}/map/listeUsers', function(person) {
-// 	          $('#personResponse').text(person.lastName + ', age ' + person.age);
-// 	        });
-// 	      });
-	      $('#randomPerson').click(function() {
-		        $.get('${pageContext.request.contextPath}/map/test', function(person) {
-		          $('#personResponse').text(person.lastName + ', age ' + person.age);
-		        });
-		      });
-	     
+       $(document).ready(function(){
+    	   
+		$("#recupUsers").click(function(e) {
+
+			// On evite le comportement par defaut du submit.
+			e.preventDefault();
+			recupViaAjax();
+
+		});
 	});
-	//A rajouter
-// 	 success: function (data) {
-// 	          $.each(data, function(index, currEmp) {
-// 	             console.log(currEmp.name); //to print name of employee
-// 	         });    
-// 	        },
-	
+
+	function recupViaAjax() {
+		//On initialise la variable de données qu'on recuperera dans un tableau vide
+		var donnees = [];
+		
+		//On lance une requete ajax pour recuperer les données
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "${pageContext.request.contextPath}/map/users/liste",
+			dataType : 'json',
+			//timeout : 100000,
+			//Si tout se passe bien on le gère ici
+			success : function(donnees) {
+				  //pour chaque donnée on récupère l'index et l'utilisateur correspondant
+				  $.each(donnees, function(index, user) {
+			             console.log(user.lastName, user.latitude, user.longitude);
+			            
+			         });  
+			},
+			//S'il y a erreur ...
+			error : function(e) {
+				console.log("ERROR: ", e);
+				display(e);
+			},
+			//Quand tout est fini
+			done : function(e) {
+				console.log("DONE");
+			}
+		});
+	}
 	</script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC95GpgAzzfx4qDEDw-_G76aMlpwtvoSc&callback=initMap"

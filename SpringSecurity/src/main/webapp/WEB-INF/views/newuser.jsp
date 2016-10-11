@@ -98,7 +98,7 @@
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="latitude">Latitude</label>
 				<div class="col-md-7">
-					<form:input type="number" value="50.639974" path="latitude" id="latitude" class="form-control input-sm"/>
+					<form:input type="number" value="50.593643" path="latitude" id="latitude" class="form-control input-sm"/>
 					<div class="has-error">
 						<form:errors path="latitude" class="help-inline"/>
 					</div>
@@ -110,7 +110,7 @@
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="longitude">Longitude</label>
 				<div class="col-md-7">
-					<form:input type="number" value="3.070848" path="longitude" id="longitude" class="form-control input-sm"/>
+					<form:input type="number" value="3.097422" path="longitude" id="longitude" class="form-control input-sm"/>
 					<div class="has-error">
 						<form:errors path="longitude" class="help-inline"/>
 					</div>

@@ -16,7 +16,7 @@ import com.spring.service.UserService;
 
 @Controller
 
-// Reutilisé dans le context par la jsp
+// Reutilisé dans le context par la jsp pour mapper les objets
 @RequestMapping("map")
 public class MapController {
 
@@ -27,25 +27,20 @@ public class MapController {
 		this.userService = userService;
 	}
 
-	@RequestMapping("listeUsers")
-	@ResponseBody
-	public List<User> listerTousUtilisateurs() {
-		return userService.listUsers();
-	}
+	 @RequestMapping(value="users/liste", method = RequestMethod.GET, produces="application/json")
+	    @ResponseBody
+	    public List<User> liste(){
+			return userService.listUsers();
+	    }
 
-	@RequestMapping(value="test", method =  RequestMethod.GET,
-            produces="application/json")
-	public @ResponseBody List<User> pay(@RequestParam("empid") int id, String firstName, String lastName) {
+//	@RequestMapping(value="test", method =  RequestMethod.GET,
+//            produces="application/json")
+//	public @ResponseBody List<User> pay(@RequestParam("empid") int id, String firstName, String lastName) {
+//
+//	//get your employee list here
+//	return userService.listUsers();
+//	}
 
-	//get your employee list here
-	return userService.listUsers();
-	}
-
-	@RequestMapping("person/random")
-	@ResponseBody
-	public User randomUser() {
-		return userService.getRandom();
-	}
 
 	@RequestMapping("person/{id}")
 	@ResponseBody
