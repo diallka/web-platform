@@ -21,8 +21,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import com.spring.model.User;
 import com.spring.model.UserProfile;
@@ -66,15 +64,15 @@ public class UserConfigController {
 //		return "espace_utilisateur";
 //	}
 
-	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
+	@RequestMapping(value = "/espace_utilisateur" , method = RequestMethod.GET)
 	public String UserPage(ModelMap model, Model m) {
-		model.addAttribute("bienvenue", "Bienvenue dans votre espace personnel");
+		model.addAttribute("bienvenue", "Bienvenue dans ton espace personnel");
 		model.addAttribute("utilisateur", getPrincipal()); //Nous permet de récupérer l'identifiant de la personne connectée
-		
-		
+	
 		m.addAttribute("test", getPrincipal());
 		return "espace_utilisateur";
 	}
+	
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model, Model m) {
@@ -89,10 +87,11 @@ public class UserConfigController {
 		return "dba";
 	}
 
-	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-	public String accessDeniedPage(ModelMap model) {
+	
+	@RequestMapping(value = "/access_refuse", method = RequestMethod.GET)
+	public String accessRefuse(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
-		return "accessDenied";
+		return "access_refuse";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -110,13 +109,14 @@ public class UserConfigController {
 		return "redirect:/accueil?deconnecte";
 	}
 
-	
-	@RequestMapping(value = "/newUser", method = RequestMethod.GET)
-	public String newRegistration(ModelMap model) {
+	@RequestMapping(value = "/newuser", method = RequestMethod.GET)
+	public String ajoutUtilisateur(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
 		return "newuser";
 	}
+	
+	
 
 	/*
 	 * This method will be called on form submission, handling POST request It

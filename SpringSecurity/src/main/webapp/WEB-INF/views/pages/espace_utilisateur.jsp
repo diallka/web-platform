@@ -93,10 +93,10 @@ label {
 <body>
 	<div class="success">
 		<div style="float: right">
-			<a href="<c:url value="/accueil" />">Accueil</a>
+			<a href="<c:url value="/logout" />">Déconnexion</a>
 		</div>
 		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br /> Test:
-		${test} <br /> <a href="<c:url value="/logout" />">Déconnexion</a>
+		${test} <br />
 	</div>
 
 	<!-- ********************************************************************************* -->
@@ -116,7 +116,7 @@ label {
 
 		<script>
     var map;
-    var details = "" ;
+    var details1 = "" ;
     var details2 = "";
     var km;
     var id;
@@ -192,9 +192,13 @@ label {
               function test(){
               						 $.getJSON('${pageContext.request.contextPath}/map/users/liste', function(donnees) {
               							 $.each(donnees, function(index, user) {
-					          					
-			          			             	console.log(user.firstName, user.latitude, user.longitude);
-			          			              $('#details').text(user.firstName + ', age ' + user.age);
+              								 //index = (index + 1) % donnees.length ;
+			          			             	console.log(user.id, user.firstName, user.latitude, user.longitude);
+			          			              details1 = details1 
+								          	                    + "Nom: " + user.lastName + " Prenom: " + user.firstName + " Age: " + user.age + " ans " + "<br>";
+
+			          			             $('#details').html(details1);
+			          			       
 //			          			                recupMarker = new google.maps.Marker({
 //			          			                position: {lat: user.latitude, lng: user.longitude},
 //			          			                map: map,
@@ -241,14 +245,17 @@ label {
 						   //************************************************************************************
 						   				//On exécute la fonction
 										TestMarker();  
+										
 										recupMarker.addListener('click', function () {
-		          		                     //$("#details").html(details); //Au clic on affiche le détail définit en dessous
-		          		                    	console.log(details);
-		          		                      //detail à revoir
-		          		                    	details = details + user.firstName
-		                    					  + user.latitude
-		                    					  + user.longitude
-											infowindow5.open(map, recupMarker);
+											//$("#details").hide();
+											//$("#details").html(details2); //Au clic on affiche le détail définit en dessous
+ 		          		                    		console.log(details2);
+											 
+		          		                    		details2 = details2
+					          		                    		+ user.firstName
+					                    					  	+ user.latitude
+					                    					  	+ user.longitude
+													//infowindow5.open(map, recupMarker);
 		          		                  });
 							//**********************************************************************************			 
 			          			            });

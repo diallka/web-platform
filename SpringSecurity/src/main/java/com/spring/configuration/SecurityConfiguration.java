@@ -49,12 +49,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  	//.antMatchers("/espace_perso").permitAll()  //ici on autorise tout le monde à y accéder meme pas connecté
 	  	//.antMatchers("/espace_perso").authenticated() //renvoit sur la page d'authentification quand on rentre l'url
 	  	.antMatchers("/", "/accueil").permitAll()  //ici on autorise tout le monde à y accéder meme pas connecté
-	  	.antMatchers("/espace_perso_utilisateur").access("hasRole('USER')") //Ne peuvent y accéder que les utilisateurs avec leur role
-	  	.antMatchers("/admin/**","/newuser").access("hasRole('ADMIN')")
+	  	.antMatchers("/espace_utilisateur").access("hasRole('USER')") //Ne peuvent y accéder que les utilisateurs avec leur role
+	  	.antMatchers("/admin/**", "/newuser").access("hasRole('ADMIN')")
 	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
 	  	.and().formLogin().loginPage("/login")
 	  	.usernameParameter("ssoId").passwordParameter("password")
 	  	.and().csrf()
-	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied");
+	  	.and().exceptionHandling().accessDeniedPage("/access_refuse");
 	}
 }

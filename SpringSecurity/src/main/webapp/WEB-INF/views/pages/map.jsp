@@ -116,7 +116,7 @@ label {
 
 		<script>
     var map;
-    var details;
+    var details1 = "" ;
     var details2 = "";
     var km;
     var id;
@@ -125,10 +125,12 @@ label {
     var destination; 
     var marker1;
     var marker2;
-    var recupMarker; //Markers avec coordonées recupérées en bdd viaAjax
+    var recupMarker = []; //Markers avec coordonées recupérées en bdd viaAjax
+    var recupMarkerContent = [];
+    var recupMarkerInfoWindow = [];
 
     function initMap() {
-    	   var details ="";
+    		//var details ="";
             var lille = {lat: 50.634032, lng: 3.061574};
             var bruxelles = {lat: 50.847151, lng: 4.355476};
               map = new google.maps.Map(document.getElementById('map'), {
@@ -160,23 +162,17 @@ label {
                       infowindow1.open(map, marker1);
                   });
               }
-              //***************************************************************************
-              function test(){		
+             
+              //*****************************************************************************
+              function test(){
               						 $.getJSON('${pageContext.request.contextPath}/map/users/liste', function(donnees) {
-              							
-              							 console.log(donnees.length); //Nombre d'objets recupérés
-              							
-              							
-              							 $(donnees).each(function(index, user) {
-              								
-                   								$('#details').html(user.firstName + user.latitude + user.longitude );
-                   							
-              								
-			          			             console.log(user.firstName, user.latitude, user.longitude);
-			          			              
+              							 $.each(donnees, function(index, user) {
+              								 //index = (index + 1) % donnees.length ;
+			          			             	console.log(user.id, user.firstName, user.latitude, user.longitude);
+			          			              details1 = details1 
+								          	                    + "Nom: " + user.lastName + " Prenom: " + user.firstName + " Age: " + user.age + " ans " + "<br>";
 
-							//**************************************************************************
-
+			          			        
 										function addMarker(location) {
 			          			                recupMarker = new google.maps.Marker({
 			          			                position: location,
@@ -200,30 +196,30 @@ label {
 									           emplacement = new google.maps.LatLng(user.latitude, user.longitude);
 									           addMarker(emplacement);
 									    }
-										//detail à revoir
-          		                    	details = details + user.firstName
-                    					  + user.latitude
-                    					  + user.longitude
+						   
 						   //************************************************************************************
 						   				//On exécute la fonction
 										TestMarker();  
-										recupMarker.addListener('click', function () {
-		          		                     //$("#details").html(details); //Au clic on affiche le détail définit en dessous
-		          		                    	console.log(details);
-		          		                      
-											infowindow5.open(map, recupMarker);
-											
-		          		                  });
 										
+										recupMarker.addListener('click', function () {
+											//$("#details").hide();
+											$("#details").html(details2); //Au clic on affiche le détail définit en dessous
+// 		          		                    		console.log(details);
+											 
+		          		                    		details2 = details2
+					          		                    		+ user.firstName
+					                    					  	+ user.latitude
+					                    					  	+ user.longitude
+													//infowindow5.open(map, recupMarker);
+		          		                  });
 							//**********************************************************************************			 
 			          			            });
-              							 
 								        });
-              						 
               						 }
-              
               						 test();
-              						
+					              
+			//*******************************************************************************
+
           }
 
     </script>

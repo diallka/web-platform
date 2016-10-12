@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+  
+   <!-- Base Definition -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/tiles/layouts/dark.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/templates/dark/header.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/dark/menu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/dark/footer.jsp" />  
+   </definition>  
+  
+   <!-- Page accueil -->
+   <definition name="accueil" extends="base-definition">  
+       <put-attribute name="title" value="Bienvenue" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
+   </definition>  
+ 
+   <!-- Page map test -->
+   <definition name="map" extends="base-definition">  
+       <put-attribute name="title" value="Page de test map" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/map.jsp" />  
+   </definition> 
+   
+   <!-- Accès refusé -->
+   <definition name="access_refuse" extends="base-definition">  
+       <put-attribute name="title" value="Accès refuse" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/access_refuse.jsp" />  
+   </definition>
+   
+   <!-- Ajout utilisateur -->
+   <definition name="newuser" extends="base-definition">  
+       <put-attribute name="title" value="Nouvel Utilisateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/newuser.jsp" />  
+   </definition> 
+   
+   <!-- Espace utilisateurs -->
+   <definition name="espace_utilisateur" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel utilisateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/espace_utilisateur.jsp" />  
+   </definition> 
+   
+   <!-- Espace administrateur -->
+   <definition name="admin" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel administrateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />  
+   </definition>
+   
+   
+ 
+   <!-- Page d'authentification -->
+   <definition name="login" extends="base-definition">  
+       <put-attribute name="title" value="Connexion" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
+   </definition>
+   
+    
+    <!-- Page de contact-->
+   <definition name="contact" extends="base-definition">  
+       <put-attribute name="title" value="Contactez-nous" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contact.jsp" />  
+   </definition> 
+  
+  
+</tiles-definitions>

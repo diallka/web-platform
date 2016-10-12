@@ -40,12 +40,20 @@ public class UserController {
 	public String mapPage() {
 		return "map";
 	}
+	//Test contact
+		@RequestMapping(value = "/contact", method = RequestMethod.GET)
+		public String contactPage() {
+			return "contact";
+		}
+
 	
 	//Test map
-		@RequestMapping(value = "/map2", method = RequestMethod.GET)
-		public String map2() {
-			return "map2";
-		}
+//		@RequestMapping(value = "/map2", method = RequestMethod.GET)
+//		public String map2(ModelMap model) {
+//			User user = new User();
+//			model.addAttribute("user", user);
+//			return "newuser";
+//		}
 		
 	//Test map Ajax
 		@RequestMapping(value = "/mapAjax", method = RequestMethod.GET)
