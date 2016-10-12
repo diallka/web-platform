@@ -12,11 +12,6 @@
 </head>
 <body>
 	<div class="success">
-	<div style="float:right">
-		<a href="<c:url value="/espace_perso_utilisateur" />">- Espace utilisateur</a>
-		<br/>
-		<a href="<c:url value="/admin" />">- Espace administrateur</a>
-	</div>
 		<h3><center>Bienvenue, Site qui est en cours de construction... Merci</center></h3>
 	</div>
 </body>
