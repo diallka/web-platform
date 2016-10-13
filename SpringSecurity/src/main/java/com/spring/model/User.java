@@ -1,5 +1,7 @@
 package com.spring.model;
 
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -43,6 +47,10 @@ public class User {
 	@NotEmpty
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
+	
+	@Temporal(TemporalType.DATE) //Conversion sinon retourne que des chiffres
+	private Date date_inscription;
+
 	// ********************************************************
 	@Column(name = "COUNTRY")
 	private String country;
@@ -58,12 +66,12 @@ public class User {
 	// ********************************************************
 	@NotEmpty
 	@Column(name = "STATE", nullable = false)
-	private String state = State.ACTIVE.getState();
+	private String state = Etat.ACTIVE.getState();
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "APP_USER_USER_PROFILE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "USER_PROFILE_ID") })
-	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+	private Set<ProfilUser> userProfiles = new HashSet<ProfilUser>();
 
 	public int getId() {
 		return id;
@@ -89,8 +97,17 @@ public class User {
 		return age;
 	}
 
+
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public Date getDate_inscription() {
+		return date_inscription;
+	}
+
+	public void setDate_inscription(Date date_inscription) {
+		this.date_inscription = date_inscription;
 	}
 
 	public double getLatitude() {
@@ -153,11 +170,11 @@ public class User {
 		this.state = state;
 	}
 
-	public Set<UserProfile> getUserProfiles() {
+	public Set<ProfilUser> getUserProfiles() {
 		return userProfiles;
 	}
 
-	public void setUserProfiles(Set<UserProfile> userProfiles) {
+	public void setUserProfiles(Set<ProfilUser> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 

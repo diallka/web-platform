@@ -7,25 +7,25 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.spring.model.UserProfile;
+import com.spring.model.ProfilUser;
 
 @Repository("userProfileDao")
-public class UserProfileDaoImpl extends AbstractDao<Integer, UserProfile>implements UserProfileDao{
+public class ProfilUserDaoImpl extends AbstractDao<Integer, ProfilUser>implements ProfilUserDao{
 
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findAll(){
+	public List<ProfilUser> findAll(){
 		Criteria crit = createEntityCriteria();
 		crit.addOrder(Order.asc("type"));
-		return (List<UserProfile>)crit.list();
+		return (List<ProfilUser>)crit.list();
 	}
 	
-	public UserProfile findById(int id) {
+	public ProfilUser findById(int id) {
 		return getByKey(id);
 	}
 	
-	public UserProfile findByType(String type) {
+	public ProfilUser findByType(String type) {
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("type", type));
-		return (UserProfile) crit.uniqueResult();
+		return (ProfilUser) crit.uniqueResult();
 	}
 }

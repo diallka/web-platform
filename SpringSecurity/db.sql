@@ -7,6 +7,7 @@ create table APP_USER (
    first_name VARCHAR(30) NOT NULL,
    age int(2) NOT NULL,
    email VARCHAR(30) NOT NULL,
+   date_inscription TIMESTAMP NOT NULL,
    country VARCHAR(30) NOT NULL,
    latitude double NOT NULL,
    longitude double NOT NULL,
@@ -44,8 +45,8 @@ VALUES ('DBA');
  
  
 /* Populate one Admin User which will further create other users for the application using GUI */
-INSERT INTO APP_USER(sso_id, password, first_name, last_name, age, email, country, latitude, longitude, state)
-VALUES ('sam','$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm', 'Abdoul','DIALLO', 29, 'abdoul@email.com', 'FRANCE', 50.640266, 3.074592, 'Active');
+INSERT INTO APP_USER(sso_id, password, first_name, last_name, age, email, date_inscription, country, latitude, longitude, state)
+VALUES ('sam','sam', 'Abdoul','DIALLO', 29, 'abdoul@email.com', now(), 'FRANCE', 50.640266, 3.074592, 'Active');
  
  
 /* Populate JOIN Table */

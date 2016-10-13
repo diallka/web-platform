@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,15 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.model.User;
-import com.spring.model.UserProfile;
-import com.spring.service.UserProfileService;
+import com.spring.model.ProfilUser;
+import com.spring.service.ProfilUserService;
 import com.spring.service.UserService;
 
 @Controller
 public class UserConfigController {
 
 	@Autowired
-	UserProfileService userProfileService;
+	ProfilUserService userProfileService;
 	
 	@Autowired
 	UserService userService;
@@ -84,7 +85,7 @@ public class UserConfigController {
 	@RequestMapping(value = "/db", method = RequestMethod.GET)
 	public String dbaPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
-		return "dba";
+		return "db";
 	}
 
 	
@@ -106,7 +107,7 @@ public class UserConfigController {
 		if (auth != null){    
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
-		return "redirect:/accueil?deconnecte";
+		return "redirect:/?deconnecte";
 	}
 
 	@RequestMapping(value = "/newuser", method = RequestMethod.GET)
@@ -122,7 +123,7 @@ public class UserConfigController {
 	 * This method will be called on form submission, handling POST request It
 	 * also validates the user input
 	 */
-	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/newuser", method = RequestMethod.POST)
 	public String saveRegistration(@Valid User user,
 			BindingResult result, ModelMap model) {
 		
@@ -139,7 +140,7 @@ public class UserConfigController {
 		System.out.println("Email : "+user.getEmail());
 		System.out.println("Checking UsrProfiles....");
 		if(user.getUserProfiles()!=null){
-			for(UserProfile profile : user.getUserProfiles()){
+			for(ProfilUser profile : user.getUserProfiles()){
 				System.out.println("Profile : "+ profile.getType());
 			}
 		}
@@ -150,24 +151,24 @@ public class UserConfigController {
 
 	
 	
-	//On recupère le prenom de la personne connecté qu'on renvoit
+	//On recupère l'identifiant de la personne connecté qu'on renvoit
 	private String getPrincipal(){
-		String userName = null;
+		String userLogin = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails) {
-			userName = ((UserDetails)principal).getUsername();
+			userLogin = ((UserDetails)principal).getUsername();
 			
 		} else {
-			userName = principal.toString();
+			userLogin = principal.toString();
 		}
-		return userName;
+		return userLogin;
 	}
 	
 	
 	
 	@ModelAttribute("roles")
-	public List<UserProfile> initializeProfiles() {
+	public List<ProfilUser> initializeProfiles() {
 		return userProfileService.findAll();
 	}
 

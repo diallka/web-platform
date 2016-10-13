@@ -9,13 +9,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="USER_PROFILE")
-public class UserProfile {
+public class ProfilUser {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;	
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	private String type = UserProfileType.USER.getUserProfileType();
+	private String type = TypeProfilUser.USER.getUserProfileType();
 	
 	public int getId() {
 		return id;
@@ -49,9 +49,9 @@ public class UserProfile {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof UserProfile))
+		if (!(obj instanceof ProfilUser))
 			return false;
-		UserProfile other = (UserProfile) obj;
+		ProfilUser other = (ProfilUser) obj;
 		if (id != other.id)
 			return false;
 		if (type == null) {

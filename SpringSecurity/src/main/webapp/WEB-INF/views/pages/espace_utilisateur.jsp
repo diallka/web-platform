@@ -95,6 +95,7 @@ label {
 		<div style="float: right">
 			<a href="<c:url value="/logout" />">Déconnexion</a>
 		</div>
+		Date d'inscription: ${user.date_inscription} <br/>
 		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br /> Test:
 		${test} <br />
 	</div>

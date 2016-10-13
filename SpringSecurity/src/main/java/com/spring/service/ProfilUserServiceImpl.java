@@ -6,25 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.dao.UserProfileDao;
-import com.spring.model.UserProfile;
+import com.spring.dao.ProfilUserDao;
+import com.spring.model.ProfilUser;
 
 @Service("userProfileService")
 @Transactional
-public class UserProfileServiceImpl implements UserProfileService{
+public class ProfilUserServiceImpl implements ProfilUserService{
 	
 	@Autowired
-	UserProfileDao dao;
+	ProfilUserDao dao;
 	
-	public List<UserProfile> findAll() {
+	public List<ProfilUser> findAll() {
 		return dao.findAll();
 	}
 
-	public UserProfile findByType(String type){
+	public ProfilUser findByType(String type){
 		return dao.findByType(type);
 	}
 
-	public UserProfile findById(int id) {
+	public ProfilUser findById(int id) {
 		return dao.findById(id);
 	}
 }

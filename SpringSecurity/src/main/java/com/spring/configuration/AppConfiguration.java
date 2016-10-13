@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class AppConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Autowired
-	RoleToUserProfileConverter roleToUserProfileConverter;
+	ConversionRoleProfilUser roleToUserProfileConverter;
 	
 	/**
      * Configure TilesConfigurer.

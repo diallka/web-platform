@@ -1,13 +1,13 @@
 package com.spring.model;
 
-public enum UserProfileType {
+public enum TypeProfilUser {
 	USER("USER"),
 	DBA("DBA"),
 	ADMIN("ADMIN");
 	
 	String userProfileType;
 	
-	private UserProfileType(String userProfileType){
+	private TypeProfilUser(String userProfileType){
 		this.userProfileType = userProfileType;
 	}
 	

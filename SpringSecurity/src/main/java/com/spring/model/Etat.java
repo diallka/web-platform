@@ -1,25 +1,25 @@
 package com.spring.model;
 
-public enum State {
+public enum Etat {
 
 	ACTIVE("Active"),
 	INACTIVE("Inactive"),
 	DELETED("Deleted"),
 	LOCKED("Locked");
 	
-	private String state;
+	private String etat;
 	
-	private State(final String state){
-		this.state = state;
+	private Etat(final String state){
+		this.etat = state;
 	}
 	
 	public String getState(){
-		return this.state;
+		return this.etat;
 	}
 
 	@Override
 	public String toString(){
-		return this.state;
+		return this.etat;
 	}
 
 

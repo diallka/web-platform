@@ -50,8 +50,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  	//.antMatchers("/espace_perso").authenticated() //renvoit sur la page d'authentification quand on rentre l'url
 	  	.antMatchers("/", "/accueil").permitAll()  //ici on autorise tout le monde à y accéder meme pas connecté
 	  	.antMatchers("/espace_utilisateur").access("hasRole('USER')") //Ne peuvent y accéder que les utilisateurs avec leur role
-	  	.antMatchers("/admin/**", "/newuser").access("hasRole('ADMIN')")
-	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+	  	.antMatchers("/admin/**", "/newuser").access("hasRole('ADMIN')") //seulement ADMIN
+	  	//.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')") 
+	  	.antMatchers("/db/**").access("hasRole('ADMIN') or hasRole('DBA')") //etre ADMIN ou DBA
 	  	.and().formLogin().loginPage("/login")
 	  	.usernameParameter("ssoId").passwordParameter("password")
 	  	.and().csrf()

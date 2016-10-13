@@ -37,6 +37,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/newuser.jsp" />  
    </definition> 
    
+   <!-- Succès ajout utilisateur -->
+   <definition name="registrationsuccess" extends="base-definition">  
+       <put-attribute name="title" value="Ajout avec succès" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/registrationsuccess.jsp" />  
+   </definition> 
+   
    <!-- Espace utilisateurs -->
    <definition name="espace_utilisateur" extends="base-definition">  
        <put-attribute name="title" value="Espace personnel utilisateur" />  
@@ -49,6 +55,11 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />  
    </definition>
    
+   <!-- Espace dbAdmin -->
+   <definition name="db" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel administrateur bdd" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/db.jsp" />  
+   </definition>
    
  
    <!-- Page d'authentification -->

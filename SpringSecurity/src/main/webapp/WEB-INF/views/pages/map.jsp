@@ -92,11 +92,7 @@ label {
 </head>
 <body>
 	<div class="success">
-		<div style="float: right">
-			<a href="<c:url value="/accueil" />">Accueil</a>
-		</div>
-		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br /> Test:
-		${test} <br /> <a href="<c:url value="/logout" />">Déconnexion</a>
+		Hello <strong>${utilisateur}</strong>: ${bienvenue} <br /> 
 	</div>
 
 	<!-- ********************************************************************************* -->
@@ -168,7 +164,7 @@ label {
               						 $.getJSON('${pageContext.request.contextPath}/map/users/liste', function(donnees) {
               							 $.each(donnees, function(index, user) {
               								 //index = (index + 1) % donnees.length ;
-			          			             	console.log(user.id, user.firstName, user.latitude, user.longitude);
+			          			             	console.log(user.id, user.firstName, user.latitude, user.longitude, user.date_inscription);
 			          			              details1 = details1 
 								          	                    + "Nom: " + user.lastName + " Prenom: " + user.firstName + " Age: " + user.age + " ans " + "<br>";
 

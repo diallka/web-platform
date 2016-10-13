@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.model.User;
-import com.spring.model.UserProfile;
+import com.spring.model.ProfilUser;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
@@ -38,7 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private List<GrantedAuthority> getGrantedAuthorities(User user){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
-		for(UserProfile userProfile : user.getUserProfiles()){
+		for(ProfilUser userProfile : user.getUserProfiles()){
 			System.out.println("UserProfile : "+userProfile);
 			authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
 		}
