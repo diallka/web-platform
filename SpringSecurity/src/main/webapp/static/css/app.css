@@ -49,9 +49,20 @@ body, #mainWrapper, .form-control{
     padding: 10%;
 }
 
+.tab-container {
+  position:fiexd;
+  width:40%;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #E8E1E1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 .form-container {
   position:fiexd;
-  width:50%;
+  width:40%;
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -73,7 +84,7 @@ body, #mainWrapper, .form-control{
 
 .success{
   position:fiexd;
-  width:80%;
+  width:90%;
   margin: 0 auto; /*permet de center la div au milieu de la page */
   margin-top:20px;
   padding: 20px;

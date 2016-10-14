@@ -1,7 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Gère largeur hauteur/epaisseur entre Navbar et page -->
 <style type="text/css">
     .bs-example{
-    	margin: 20px;
+    	margin: 2%;
     }
    
 </style>
@@ -17,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><img src="/static/images/logo.png" /></a>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><img src="<c:url value="/static/images/logo.PNG"/>" /></a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

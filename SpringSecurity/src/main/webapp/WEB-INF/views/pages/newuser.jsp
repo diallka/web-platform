@@ -12,8 +12,6 @@
 </head>
 
 <body>
-	<div>
-	</div>
  	<div class="form-container">
  	
  	<h1>Ajout Nouvel Utilisateur</h1>
