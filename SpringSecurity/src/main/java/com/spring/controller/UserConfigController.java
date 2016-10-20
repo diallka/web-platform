@@ -1,8 +1,5 @@
 package com.spring.controller;
 
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,153 +19,143 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.spring.model.User;
 import com.spring.model.ProfilUser;
+import com.spring.model.User;
 import com.spring.service.ProfilUserService;
 import com.spring.service.UserService;
 
 @Controller
 public class UserConfigController {
 
-	@Autowired
-	ProfilUserService userProfileService;
-	
-	@Autowired
-	UserService userService;
+    @Autowired
+    ProfilUserService userProfileService;
 
-	
-	@RequestMapping(value = {"/", "/accueil"} , method = RequestMethod.GET)
-	public String homePage(ModelMap model) {
-		model.addAttribute("bienvenue", "Bienvenue dans ton espace personnel");
-		return "accueil";
-	}
-	
-//	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
-//	@ResponseBody
-//	public String UserInformations(ModelMap model, Principal principal) {
-//		return principal.getName();
-//	}
-	
-//	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
-//	public String UserPage(ModelMap model, Principal principal) {
-//		model.addAttribute("bienvenue", "Bienvenue dans votre espace personnel");
-//		model.addAttribute("utilisateur", getPrincipal()); //Nous permet de récupérer le prenom de la personne connectée
-//		List<Object> principals = sessionRegistry.getAllPrincipals();
-//		List<String> test = new ArrayList<String>();
-//		for ( Object principal2: principals){
-//			 if (principal2 instanceof User) {
-//				 test.add(((User) principal).getLastName());
-//			    }
-//		}
-//		model.addAttribute("test", test);
-//		return "espace_utilisateur";
-//	}
+    @Autowired
+    UserService       userService;
 
-	@RequestMapping(value = "/espace_utilisateur" , method = RequestMethod.GET)
-	public String UserPage(ModelMap model, Model m) {
-		model.addAttribute("bienvenue", "Bienvenue dans ton espace personnel");
-		model.addAttribute("utilisateur", getPrincipal()); //Nous permet de récupérer l'identifiant de la personne connectée
-	
-		m.addAttribute("test", getPrincipal());
-		return "espace_utilisateur";
-	}
-	
-	
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(ModelMap model, Model m) {
-		model.addAttribute("user", getPrincipal());
-		model.addAttribute("listUsers", this.userService.listUsers());
-		return "admin";
-	}
+    @RequestMapping( value = { "/", "/accueil" } , method = RequestMethod.GET )
+    public String homePage( final ModelMap model ) {
+        model.addAttribute( "bienvenue", "Bienvenue dans ton espace personnel" );
+        return "accueil";
+    }
 
-	@RequestMapping(value = "/db", method = RequestMethod.GET)
-	public String dbaPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		return "db";
-	}
+    //	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
+    //	@ResponseBody
+    //	public String UserInformations(ModelMap model, Principal principal) {
+    //		return principal.getName();
+    //	}
 
-	
-	@RequestMapping(value = "/access_refuse", method = RequestMethod.GET)
-	public String accessRefuse(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		return "access_refuse";
-	}
+    //	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
+    //	public String UserPage(ModelMap model, Principal principal) {
+    //		model.addAttribute("bienvenue", "Bienvenue dans votre espace personnel");
+    //		model.addAttribute("utilisateur", getPrincipal()); //Nous permet de rï¿½cupï¿½rer le prenom de la personne connectï¿½e
+    //		List<Object> principals = sessionRegistry.getAllPrincipals();
+    //		List<String> test = new ArrayList<String>();
+    //		for ( Object principal2: principals){
+    //			 if (principal2 instanceof User) {
+    //				 test.add(((User) principal).getLastName());
+    //			    }
+    //		}
+    //		model.addAttribute("test", test);
+    //		return "espace_utilisateur";
+    //	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
-		return "login";
-	}
+    @RequestMapping( value = "/espace_utilisateur" , method = RequestMethod.GET )
+    public String UserPage( final ModelMap model , final Model m ) {
+        model.addAttribute( "bienvenue", "Bienvenue dans ton espace personnel" );
+        model.addAttribute( "utilisateur", this.getPrincipal() ); //Nous permet de rï¿½cupï¿½rer l'identifiant de la personne connectï¿½e
 
-	//On gère la déconnexion et rédirection de l'utilisateur
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null){    
-			new SecurityContextLogoutHandler().logout(request, response, auth);
-		}
-		return "redirect:/?deconnecte";
-	}
+        m.addAttribute( "test", this.getPrincipal() );
+        return "espace_utilisateur";
+    }
 
-	@RequestMapping(value = "/newuser", method = RequestMethod.GET)
-	public String ajoutUtilisateur(ModelMap model) {
-		User user = new User();
-		model.addAttribute("user", user);
-		return "newuser";
-	}
-	
-	
+    @RequestMapping( value = "/admin" , method = RequestMethod.GET )
+    public String adminPage( final ModelMap model , final Model m ) {
+        model.addAttribute( "user", this.getPrincipal() );
+        model.addAttribute( "listUsers", this.userService.listUsers() );
+        return "admin";
+    }
 
-	/*
-	 * This method will be called on form submission, handling POST request It
-	 * also validates the user input
-	 */
-	@RequestMapping(value = "/newuser", method = RequestMethod.POST)
-	public String saveRegistration(@Valid User user,
-			BindingResult result, ModelMap model) {
-		
-		if (result.hasErrors()) {
-			System.out.println("There are errors");
-			return "newuser";
-		}
-		userService.save(user);
-		
-		System.out.println("First Name : "+user.getFirstName());
-		System.out.println("Last Name : "+user.getLastName());
-		System.out.println("SSO ID : "+user.getSsoId());
-		System.out.println("Password : "+user.getPassword());
-		System.out.println("Email : "+user.getEmail());
-		System.out.println("Checking UsrProfiles....");
-		if(user.getUserProfiles()!=null){
-			for(ProfilUser profile : user.getUserProfiles()){
-				System.out.println("Profile : "+ profile.getType());
-			}
-		}
-		
-		model.addAttribute("success", "L'utilisateur " + user.getFirstName() + " a été ajouté avec succès");
-		return "registrationsuccess";
-	}
+    @RequestMapping( value = "/db" , method = RequestMethod.GET )
+    public String dbaPage( final ModelMap model ) {
+        model.addAttribute( "user", this.getPrincipal() );
+        return "db";
+    }
 
-	
-	
-	//On recupère l'identifiant de la personne connecté qu'on renvoit
-	private String getPrincipal(){
-		String userLogin = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    @RequestMapping( value = "/access_refuse" , method = RequestMethod.GET )
+    public String accessRefuse( final ModelMap model ) {
+        model.addAttribute( "user", this.getPrincipal() );
+        return "access_refuse";
+    }
 
-		if (principal instanceof UserDetails) {
-			userLogin = ((UserDetails)principal).getUsername();
-			
-		} else {
-			userLogin = principal.toString();
-		}
-		return userLogin;
-	}
-	
-	
-	
-	@ModelAttribute("roles")
-	public List<ProfilUser> initializeProfiles() {
-		return userProfileService.findAll();
-	}
+    @RequestMapping( value = "/login" , method = RequestMethod.GET )
+    public String loginPage() {
+        return "login";
+    }
+
+    //On gï¿½re la dï¿½connexion et rï¿½direction de l'utilisateur
+    @RequestMapping( value = "/logout" , method = RequestMethod.GET )
+    public String logoutPage( final HttpServletRequest request , final HttpServletResponse response ) {
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if ( auth != null ) {
+            new SecurityContextLogoutHandler().logout( request, response, auth );
+        }
+        return "redirect:/?deconnecte";
+    }
+
+    @RequestMapping( value = "/newuser" , method = RequestMethod.GET )
+    public String ajoutUtilisateur( final ModelMap model ) {
+        final User user = new User();
+        model.addAttribute( "user", user );
+        return "newuser";
+    }
+
+    /*
+     * This method will be called on form submission, handling POST request It
+     * also validates the user input
+     */
+    @RequestMapping( value = "/newuser" , method = RequestMethod.POST )
+    public String saveRegistration( @Valid final User user , final BindingResult result , final ModelMap model ) {
+
+        if ( result.hasErrors() ) {
+            System.out.println( "There are errors" );
+            return "newuser";
+        }
+        this.userService.save( user );
+
+        System.out.println( "First Name : " + user.getFirstName() );
+        System.out.println( "Last Name : " + user.getLastName() );
+        System.out.println( "SSO ID : " + user.getSsoId() );
+        System.out.println( "Password : " + user.getPassword() );
+        System.out.println( "Email : " + user.getEmail() );
+        System.out.println( "Checking UsrProfiles...." );
+        if ( user.getUserProfiles() != null ) {
+            for ( final ProfilUser profile : user.getUserProfiles() ) {
+                System.out.println( "Profile : " + profile.getType() );
+            }
+        }
+
+        model.addAttribute( "success", "L'utilisateur " + user.getFirstName() + " a ï¿½tï¿½ ajoutï¿½ avec succï¿½s" );
+        return "registrationsuccess";
+    }
+
+    //On recupï¿½re l'identifiant de la personne connectï¿½ qu'on renvoit
+    private String getPrincipal() {
+        String userLogin = null;
+        final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if ( principal instanceof UserDetails ) {
+            userLogin = ( (UserDetails) principal ).getUsername();
+
+        } else {
+            userLogin = principal.toString();
+        }
+        return userLogin;
+    }
+
+    @ModelAttribute( "roles" )
+    public List< ProfilUser > initializeProfiles() {
+        return this.userProfileService.findAll();
+    }
 
 }

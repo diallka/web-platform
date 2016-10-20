@@ -18,7 +18,9 @@
 		d'administration. <br /> <a href="<c:url value='/newuser' />">Ajouter
 			utilisateurs</a> <br />
 		</div>
-		
+		<div>
+			<%@ include file ="/WEB-INF/views/pages/newuser.jsp"%>
+		</div>
 		<div class="tab-container">
 			<h3>Liste des Utilisateurs inscrits.</h3>
 		<table class="tg">

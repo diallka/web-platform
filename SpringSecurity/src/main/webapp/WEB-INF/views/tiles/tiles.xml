@@ -2,8 +2,8 @@
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
  
 <tiles-definitions>  
-  
-   <!-- Base Definition -->
+  	<!-- DEFINITONS -->
+   <!-- Definition de base****************************************************************  -->
    <definition name="base-definition"
        template="/WEB-INF/views/tiles/layouts/dark.jsp">  
        <put-attribute name="title" value="" />  
@@ -11,20 +11,42 @@
        <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/dark/menu.jsp" />  
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/dark/footer.jsp" />  
-   </definition>  
+   </definition> 
+   <!-- Definition contact****************************************************************  -->
+   <definition name="definition-contact"
+       template="/WEB-INF/views/tiles/layouts/dark.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/templates/dark/header.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/dark/menu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/pages/contact/footer.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contact/liste.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pages/contact/modif.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pages/contact/supp.jsp" />
+   </definition> <!-- ************************************************************** -->
+  <!-- FIN DEFINITONS -->
   
    <!-- Page accueil -->
    <definition name="accueil" extends="base-definition">  
        <put-attribute name="title" value="Bienvenue" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
    </definition>  
- 
    <!-- Page map test -->
    <definition name="map" extends="base-definition">  
        <put-attribute name="title" value="Page de test map" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/map.jsp" />  
    </definition> 
-   
+   <!-- ************************************************************** -->
+    <!-- Page contact test -->
+   <definition name="contact/index" extends="definition-contact">
+		<put-attribute name="content">
+			<definition >
+				<put-attribute name="vue-content"
+					value="/WEB-INF/views/pages/contact/index.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+    <!-- ************************************************************** -->
    <!-- Accès refusé -->
    <definition name="access_refuse" extends="base-definition">  
        <put-attribute name="title" value="Accès refuse" />  

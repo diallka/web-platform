@@ -26,7 +26,12 @@
 <%--                 <li class="active"><a href="${pageContext.request.contextPath}/">Accueil</a></li> --%>
                 <li ><a href="${pageContext.request.contextPath}/map">Map</a></li>
                 
-                <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/contact/lister">Contact</a>
+                <ul>
+                <li><a href="${pageContext.request.contextPath}/contact/modifier">Modifier</a></li>
+                <li><a href="${pageContext.request.contextPath}/contact/supprimer">Supprimer</a></li>
+                </ul>
+                </li>
             </ul>
             <form role="search" class="navbar-form navbar-left">
                 <div class="form-group">
