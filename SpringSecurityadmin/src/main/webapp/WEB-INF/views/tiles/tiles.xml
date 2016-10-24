@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+
+	<!-- PAGE ACCUEIL ADMINISTRATEUR -->
+	<definition name="dashboard" template="/WEB-INF/views/tiles/layouts/admin.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/tiles/templates/admin/header.jsp" />
+	<put-attribute name="title" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/admin/menu.jsp" />  
+       <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/index.jsp"/> 
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" />
+	</definition>
+	
+	<!-- PAGE AMINISTRATION UTILISATEURS -->
+	<definition name="administrateur/index" template="/WEB-INF/views/tiles/layouts/admin.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/tiles/templates/admin/header.jsp" />
+	<put-attribute name="title" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/admin/menu.jsp" /> 
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" />
+		<put-attribute name="content">
+			<definition template="/WEB-INF/views/pages/admin/fragment.jsp">
+				<put-attribute name="vue-content"
+					value="/WEB-INF/views/pages/admin/index.jsp" />
+			</definition>
+		</put-attribute>
+		<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
+		
+	</definition>
+	
+	
+  	<!-- DEFINITONS -->
+   <!-- Definition de base****************************************************************  -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/tiles/layouts/dark.jsp">  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/templates/dark/header.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/dark/menu.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/dark/footer.jsp" />  
+   </definition> 
+   <!-- Definition utilisateur****************************************************************  -->
+   <definition name="definition-utilisateur"
+       template="/WEB-INF/views/tiles/layouts/dark.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/templates/dark/header.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/dark/menu.jsp" />  
+       <put-attribute name="body" />  
+       <put-attribute name="footer" value="/WEB-INF/views/pages/utilisateur/footer.jsp" />
+   </definition> <!-- ************************************************************** -->
+   
+   <!-- Definition Administrateur****************************************************************  -->
+<!--    <definition name="definition-administrateur" -->
+<!--        template="/WEB-INF/views/tiles/layouts/admin.jsp">   -->
+<!--        <put-attribute name="title" value="" />   -->
+<!--        <put-attribute name="header" value="/WEB-INF/views/tiles/templates/admin/header.jsp" />   -->
+<!--        <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/admin/menu.jsp" />   -->
+<!--        <put-attribute name="body" />  -->
+<!--        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" /> -->
+<!--    </definition> ************************************************************** -->
+  <!-- FIN DEFINITONS -->
+  
+   <!-- Page accueil -->
+   <definition name="accueil" extends="base-definition">  
+       <put-attribute name="title" value="Bienvenue" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
+   </definition>  
+   <!-- Page map test -->
+   <definition name="map" extends="base-definition">  
+       <put-attribute name="title" value="Page de test map" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/map.jsp" />  
+   </definition> 
+   <!-- ************************************************************** -->
+    <!-- Page utilisateur test -->
+   <definition name="utilisateur/index" extends="definition-utilisateur">
+		<put-attribute name="content">
+			<definition>
+				<put-attribute name="vue-content"
+					value="/WEB-INF/views/pages/utilisateur/index.jsp" />
+			</definition>
+			
+		</put-attribute>
+		
+		<put-attribute name="body" value="/WEB-INF/views/pages/utilisateur/liste.jsp" />
+		<put-attribute name="modif" value="/WEB-INF/views/pages/utilisateur/modif.jsp" />
+	</definition>
+	<!-- ************************************************************** -->
+    <!-- Page administrateur test -->
+<!--    <definition name="administrateur/index" extends="definition-administrateur"> -->
+<!-- 		<put-attribute name="content"> -->
+<!-- 			<definition> -->
+<!-- 				<put-attribute name="vue-content" -->
+<!-- 					value="/WEB-INF/views/pages/admin/index.jsp" /> -->
+<!-- 			</definition> -->
+<!-- 		</put-attribute> -->
+<!-- 		<put-attribute name="body" value="/WEB-INF/views/pages/admin/dashboard.jsp" /> -->
+<!-- 	</definition> -->
+    <!-- ************************************************************** -->
+   <!-- Accès refusé -->
+   <definition name="access_refuse" extends="base-definition">  
+       <put-attribute name="title" value="Accès refuse" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/access_refuse.jsp" />  
+   </definition>
+   
+   <!-- Ajout utilisateur -->
+   <definition name="newuser" extends="base-definition">  
+       <put-attribute name="title" value="Nouvel Utilisateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/newuser.jsp" />  
+   </definition> 
+   
+   <!-- Succès ajout utilisateur -->
+   <definition name="registrationsuccess" extends="base-definition">  
+       <put-attribute name="title" value="Ajout avec succès" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/registrationsuccess.jsp" />  
+   </definition> 
+   
+   <!-- Espace utilisateurs ********************************************************* -->
+   <definition name="espace_utilisateur" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel utilisateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/espace_utilisateur.jsp" />  
+   </definition> 
+   
+   <!-- Espace administrateur ******************************************************  -->
+   <definition name="admin" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel administrateur" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />  
+   </definition>
+   
+   <!-- Espace dbAdmin ************************************************************  -->
+   <definition name="db" extends="base-definition">  
+       <put-attribute name="title" value="Espace personnel administrateur bdd" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/db.jsp" />  
+   </definition>
+   
+ 
+   <!-- Page d'authentification -->
+   <definition name="login" extends="base-definition">  
+       <put-attribute name="title" value="Connexion" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
+   </definition>
+   
+    
+    <!-- Page de contact-->
+   <definition name="contact" extends="base-definition">  
+       <put-attribute name="title" value="Contactez-nous" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contact.jsp" />  
+   </definition> 
+  
+  
+</tiles-definitions>
