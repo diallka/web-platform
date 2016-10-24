@@ -1,9 +1,9 @@
     <!-- jQuery -->
-    <script src="<c:url value="/static/admin/js/jquery.js" />" type="text/javascript"></script>
-   
+   <script src="<c:url value="/static/admin/js/jquery.js"/>" type="text/javascript"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="<c:url value='/static/admin/js/bootstrap.min.js' />"> </script>
+    
     
     <!-- Morris Charts JavaScript -->
     
