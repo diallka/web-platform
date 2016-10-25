@@ -2,6 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
  
 <tiles-definitions>  
+	
 
 	<!-- PAGE ACCUEIL ADMINISTRATEUR -->
 	<definition name="dashboard" template="/WEB-INF/views/tiles/layouts/admin.jsp">
@@ -12,21 +13,14 @@
        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" />
 	</definition>
 	
-	<!-- PAGE AMINISTRATION UTILISATEURS -->
-	<definition name="administrateur/index" template="/WEB-INF/views/tiles/layouts/admin.jsp">
-	<put-attribute name="header" value="/WEB-INF/views/tiles/templates/admin/header.jsp" />
-	<put-attribute name="title" value="" />  
-       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/admin/menu.jsp" /> 
-       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" />
-		<put-attribute name="content">
-			<definition template="/WEB-INF/views/pages/admin/fragment.jsp">
-				<put-attribute name="vue-content"
-					value="/WEB-INF/views/pages/admin/index.jsp" />
-			</definition>
-		</put-attribute>
-		<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
-		
+	<!-- PAGE LISTE UTILISATEURS -->
+	<definition name="admin/index" extends="dashboard">
+				<put-attribute name="content" value="/WEB-INF/views/pages/admin/index.jsp" />
+				<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
 	</definition>
+	
+	<!-- PAGE ajout -->
+	
 	
 	
   	<!-- DEFINITONS -->
@@ -79,8 +73,8 @@
 			
 		</put-attribute>
 		
-		<put-attribute name="body" value="/WEB-INF/views/pages/utilisateur/liste.jsp" />
 		<put-attribute name="modif" value="/WEB-INF/views/pages/utilisateur/modif.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pages/utilisateur/liste.jsp" />
 	</definition>
 	<!-- ************************************************************** -->
     <!-- Page administrateur test -->
@@ -120,7 +114,7 @@
    
    <!-- Espace administrateur ******************************************************  -->
    <definition name="admin" extends="base-definition">  
-       <put-attribute name="title" value="Espace personnel administrateur" />  
+       <put-attribute name="title" value="Espace personnel administrateur " />  
        <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />  
    </definition>
    
@@ -132,10 +126,8 @@
    
  
    <!-- Page d'authentification -->
-   <definition name="login" extends="base-definition">  
-       <put-attribute name="title" value="Connexion" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
-   </definition>
+   <definition name="login" template="/WEB-INF/views/pages/login.jsp" />  
+  
    
     
     <!-- Page de contact-->

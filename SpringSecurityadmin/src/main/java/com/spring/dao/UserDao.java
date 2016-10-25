@@ -6,16 +6,20 @@ import com.spring.model.User;
 
 public interface UserDao {
 
-	void save(User user);
-	
-	User findById(int id);
-	
-	User findBySSO(String sso);
-	
-	//*****************************
-	void updateUser (User user);
-	List<User> listUsers();
-	void removeUser(int id);
-	//****************************
-}
+    void save( final User user );
 
+    User findById( final int id );
+
+    User findBySSO( final String sso );
+
+    //*****************************
+    void updateUser( final User user );
+
+    List< User > listUsers();
+
+    void removeUser( final int id );
+
+    List< User > count();
+
+    //****************************
+}

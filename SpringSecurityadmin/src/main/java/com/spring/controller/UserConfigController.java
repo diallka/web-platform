@@ -100,7 +100,7 @@ public class UserConfigController {
         if ( auth != null ) {
             new SecurityContextLogoutHandler().logout( request, response, auth );
         }
-        return "redirect:/?deconnecte";
+        return "redirect:/login?deconnecte";
     }
 
     @RequestMapping( value = "/newuser" , method = RequestMethod.GET )

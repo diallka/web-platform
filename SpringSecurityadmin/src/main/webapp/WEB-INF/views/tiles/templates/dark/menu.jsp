@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><img src="<c:url value="/static/images/logo.PNG"/>" /></a>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><img src="<c:url value="/static/images/car.png"/>" /></a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

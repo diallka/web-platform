@@ -21,6 +21,13 @@
 
     <!-- Custom Fonts -->
     <link href="<c:url value='/static/admin/font-awesome/css/font-awesome.min.css' />" rel="stylesheet" type="text/css" />
+    
+    
+    <!-- jQuery -->
+<script src="<c:url value="/static/admin/js/jquery.js"/>" type="text/javascript"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<c:url value="/static/admin/js/bootstrap.min.js"/>" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

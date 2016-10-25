@@ -1,4 +1,6 @@
 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="wrapper">
 
 	<!-- Navigation -->
@@ -8,8 +10,9 @@
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/dashboard">MOVE! Admin</a>
+			<a class="navbar-brand" href="/dashboard"><img src="<c:url value="/static/images/car2.png"/>" /></a>
 		</div>
+		
 		<!-- Top Menu Items -->
 		<ul class="nav navbar-right top-nav">
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
@@ -72,36 +75,40 @@
 					<li class="divider"></li>
 					<li><a href="#">View All</a></li>
 				</ul></li>
-			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+		
+			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${username} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
 					<li><a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a></li>
 					<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a></li>
 					<li class="divider"></li>
-					<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+					<li><a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
 				</ul></li>
+				
 		</ul>
 		<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav side-nav">
 				<li class="active"><a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-				<li>
-					<a href="/administrateur/ad"><i class="fa fa-fw fa-bar-chart-o"></i> Admin</a>
-					<ul>
-						<li><a href="/administrateur/ajouter"><i class="fa fa-fw fa-bar-chart-o"></i> Ajout</a></li>
+				<li><a href="javascript:;" data-toggle="collapse" data-target="#utilisateurs"><i class="fa fa-fw fa-users"></i> Utilisateurs<i class="fa fa-fw fa-caret-down"></i></a>
+					<ul id="utilisateurs" class="collapse">
+						<li><a href="/admin/lister"><i class="fa fa-user"></i> Liste</a></li>
+						<li><a href="#"><i class="fa fa-user"></i>+ Ajout</a></li>
 					</ul>
 				</li>
-				<li><a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a></li>
-				<li><a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a></li>
-				<li><a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
-				<li><a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a></li>
+				
+				<li><a href="#"><i class="fa fa-fw fa-table"></i> Tables</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-edit"></i> Forms</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a></li>
 				<li><a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
 					<ul id="demo" class="collapse">
 						<li><a href="#">Dropdown Item</a></li>
 						<li><a href="#">Dropdown Item</a></li>
-					</ul></li>
-				<li><a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a></li>
-				<li><a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><i class="fa fa-fw fa-file"></i> Blank Page</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

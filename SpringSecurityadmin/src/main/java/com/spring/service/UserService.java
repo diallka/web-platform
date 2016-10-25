@@ -6,17 +6,22 @@ import com.spring.model.User;
 
 public interface UserService {
 
-	void save(User user);
-	
-	User findById(int id);
-	
-	User findBySso(String sso);
-	
-	//*************************
-	User getRandom();
-	void updateUser(User user);
-	List<User> listUsers();
-	void removeUser(int id);
-	//*************************
-	
+    void save( final User user );
+
+    User findById( final int id );
+
+    User findBySso( final String sso );
+
+    //*************************
+    User getRandom();
+
+    void updateUser( final User user );
+
+    List< User > listUsers();
+
+    List< User > count();
+
+    void removeUser( final int id );
+    //*************************
+
 }
