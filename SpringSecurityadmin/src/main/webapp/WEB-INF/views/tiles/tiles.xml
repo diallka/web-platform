@@ -135,6 +135,13 @@
        <put-attribute name="title" value="Contactez-nous" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/contact.jsp" />  
    </definition> 
-  
+  <definition name="ajax" extends="base-definition">  
+       <put-attribute name="title" value="Contactez-nous" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/ajax.jsp" />  
+   </definition>
+ 	<definition name="ajax/add" extends="base-definition">  
+       <put-attribute name="title" value="Contactez-nous" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/ajax.jsp" />  
+   </definition>
   
 </tiles-definitions>

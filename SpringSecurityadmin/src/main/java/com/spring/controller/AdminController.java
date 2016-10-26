@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.model.ProfilUser;
@@ -61,11 +62,11 @@ public class AdminController {
 
     }
 
-    @RequestMapping( value = "/ajouter" , method = RequestMethod.GET )
-    public ModelAndView adminAjoutUtilisateurs() {
-
-        final ModelAndView mv = this.getModelAndView();
-        mv.addObject( "titre", "Page ajout" );
+    @RequestMapping( value = "/ajouter" , method = RequestMethod.POST )
+    @ResponseBody
+    public ModelAndView adminAjoutUtilisateurs( final User user ) {
+        this.userService.save( user );
+        final ModelAndView mv = new ModelAndView( "admin/index" );
         return mv;
     }
 

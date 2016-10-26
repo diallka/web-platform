@@ -65,11 +65,11 @@ public class UserController {
     }
 
     //Test ok fontionne sur l'affichage donn�es base/ Reste ajout ajax, random...
-    @RequestMapping( value = "/ajax" , method = RequestMethod.GET )
-    public String homePage( final Model m ) {
-        m.addAttribute( "personnes", this.userService.listUsers() );
-        return "spring_ajax";
-    }
+    //    @RequestMapping( value = "/ajax" , method = RequestMethod.GET )
+    //    public String homePage( final Model m ) {
+    //        m.addAttribute( "personnes", this.userService.listUsers() );
+    //        return "ajax";
+    //    }
 
     @RequestMapping( value = "/persons" , method = RequestMethod.GET )
     public String listPersons( final Model model ) {
