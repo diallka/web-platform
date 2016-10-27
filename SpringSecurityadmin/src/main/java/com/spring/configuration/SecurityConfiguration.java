@@ -42,6 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure( final HttpSecurity http ) throws Exception {
+        //Desactiver Cross Site Request Forgery (CSFR)
+        //http.csrf().disable();
         http.authorizeRequests()
         //.antMatchers("/espace_perso").permitAll()  //ici on autorise tout le monde � y acc�der meme pas connect�
         //.antMatchers("/espace_perso").authenticated() //renvoit sur la page d'authentification quand on rentre l'url

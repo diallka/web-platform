@@ -68,6 +68,7 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
 
     }
 
+    @SuppressWarnings( "unchecked" )
     @Override
     public List< User > count() {
         final Session session = this.sessionFactory.getCurrentSession();
