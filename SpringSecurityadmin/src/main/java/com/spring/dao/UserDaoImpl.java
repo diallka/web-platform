@@ -64,7 +64,11 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
 
     @Override
     public void removeUser( final int id ) {
-        this.removeUser( id );
+        final Session session = this.sessionFactory.getCurrentSession();
+        final User user = (User) session.load( User.class, new Integer( id ) );
+        if ( null != user ) {
+            session.delete( user );
+        }
 
     }
 

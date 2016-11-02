@@ -5,56 +5,61 @@
 <!-- default header name is X-CSRF-TOKEN -->
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 <!-- ... -->
-<script type="text/javascript">
-var contexPath = "<%=request.getContextPath() %>";
-</script>
-<style type="text/css">
-label {
-	width: 70px;
-	display: inline-block;
-}
-</style>
+
+
 </head>
 
-<script src="<c:url value="/static/scripts/utilisateur/inisialize.js"/>" type="text/javascript"></script>
-
+<script src="<c:url value="/static/scripts/utilisateur/inisialiseUtilisateur.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/static/scripts/utilisateur/ajaxUtilisateur.js"/>" type="text/javascript"></script>
 <div id="page-wrapper">
 
 	<div class="container-fluid">
 
-		<p>Test</p>
+		<em id="btnAjout" class="fa fa-user fa-5x">+</em>
+
+		<%@ include file="/WEB-INF/views/pages/admin/recherche.jsp"%>
 		<br />
 
-		<button id="btnCouleur" type="submit">couleur</button>
-		<br /> <br />
-		<button id="btnAjout" type="submit" class="btn btn-g">
-			<em class="fa fa-plus-circle">Ajouter </em>
-		</button>
-		<br /> <br />
-		<form id="formAjout" method="post" action= "/admin/ajouter?">
-			<label>Nom: </label> <input type="text" name="lastName" id="lastName"/> <br /> 
-			<label>Prenom: </label> <input type="text" name="firstName" id="firstName"/> <br /> 
-			<label>Identifiant: </label> <input type="text" name="ssoId" id="ssoId"/> <br /> 
-			<label>Mot de passe: </label> <input type="text" name="password" id="password"/> <br />
-			<label>Age: </label> <input type="text" name="age" id="age" /> <br /> 
-			<label>Pays: </label> <input type="text" name="country" id="country" /> <br /> 
-			<label>Latitude:</label> <input type="number" value="50.593643"  name="latitude" id="latitude" /> <br /> 
-			<label>Longitude: </label> <input type="number" value="3.097422" name="longitude" id="longitude"/> <br />
-			<label>Email: </label> <input type="text" name="email" id="email"/> <br />
-			<label>Role: </label> <input type="text" value="USER" name="userProfiles" id="userProfiles"/> <br /> 
-			<input type="submit" value="Ajouter" /><br /> <br /><br /> <br />
-			
-<!-- 						<input type="hidden" -->
-<%-- 								name="${_csrf.parameterName}" --%>
-<%-- 								value="${_csrf.token}"/> --%>
-		</form>
-		<div id="personFormResponse" class="green">Reponse:</div>
+		<!-- 			<h3>Liste utilisateurs:</h3> <br /> -->
+		<%-- 			<%@ include file="/WEB-INF/views/pages/admin/resultatRecherche.jsp"%> --%>
+
+
+		<%@ include file="/WEB-INF/views/pages/admin/ajout.jsp"%>
+
+		<!-- Essayer de rafraichir cette zone en utilisant Ajax pour recup données -->
+		<h2>Liste des utilisateurs</h2>
+		<div id="tab">
+			<table class="tg">
+				<tr>
+					<th width="40">ID</th>
+					<th width="120">NOM</th>
+					<th width="120">PRENOM</th>
+					<th width="30">AGE</th>
+					<th width="120">PAYS</th>
+					<th>MODIFIER</th>
+					<th>SUPPRIMER</th>
+				</tr>
+				<c:forEach items="${liste}" var="user">
+					<tr>
+						<td>${user.id}</td>
+						<td>${user.lastName}</td>
+						<td>${user.firstName}</td>
+						<td>${user.age}</td>
+						<td>${user.country}</td>
+						<td><a href="/admin/recuperer/${user.id}">rec</a></td>
+						<td><a href="/admin/supprimer/${user.id}">X</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div id="personFormResponse" class="green"></div>
 
 		<script type="text/javascript">
 			$( document ).ready( function () {
-
+				//e.preventDefault();
 				initialiserUtilisateur();
-
+				supprimerUtilisateur();
+				
 			} );
 		</script>
 

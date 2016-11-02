@@ -2,22 +2,44 @@
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
  
 <tiles-definitions>  
-	
 
+	 <!-- Page accueil -->
+   <definition name="accueil" extends="base-definition">  
+       <put-attribute name="title" value="Bienvenue" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
+   </definition>  
+	 <!-- Page d'authentification -->
+   <definition name="login" template="/WEB-INF/views/pages/login.jsp" />  
+
+<!-- Administrateur********************************************************************* -->
 	<!-- PAGE ACCUEIL ADMINISTRATEUR -->
-	<definition name="dashboard" template="/WEB-INF/views/tiles/layouts/admin.jsp">
+	<definition name="admin_dashboard" template="/WEB-INF/views/tiles/layouts/admin.jsp">
 	<put-attribute name="header" value="/WEB-INF/views/tiles/templates/admin/header.jsp" />
 	<put-attribute name="title" value="" />  
        <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/admin/menu.jsp" />  
-       <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/index.jsp"/> 
+       <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/admin_index.jsp"/> 
        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" />
 	</definition>
-	
 	<!-- PAGE LISTE UTILISATEURS -->
-	<definition name="admin/index" extends="dashboard">
+	<definition name="admin/index" extends="admin_dashboard">
 				<put-attribute name="content" value="/WEB-INF/views/pages/admin/index.jsp" />
 				<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
 	</definition>
+	<!-- /Administrateur****************************************************************** -->
+	
+	<!-- PAGE ACCUEIL UTILISATEUR -->
+	<definition name="user_dashboard" template="/WEB-INF/views/tiles/layouts/user.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/tiles/templates/user/header.jsp" />
+	<put-attribute name="title" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/user/menu.jsp" />  
+       <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/user_index.jsp"/> 
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/user/footer.jsp" />
+	</definition>
+	
+	
+	
+	
+
 	
 	<!-- PAGE ajout -->
 	
@@ -51,12 +73,9 @@
 <!--        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/admin/footer.jsp" /> -->
 <!--    </definition> ************************************************************** -->
   <!-- FIN DEFINITONS -->
+  	
+     
   
-   <!-- Page accueil -->
-   <definition name="accueil" extends="base-definition">  
-       <put-attribute name="title" value="Bienvenue" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
-   </definition>  
    <!-- Page map test -->
    <definition name="map" extends="base-definition">  
        <put-attribute name="title" value="Page de test map" />  
@@ -123,13 +142,7 @@
        <put-attribute name="title" value="Espace personnel administrateur bdd" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/db.jsp" />  
    </definition>
-   
- 
-   <!-- Page d'authentification -->
-   <definition name="login" template="/WEB-INF/views/pages/login.jsp" />  
   
-   
-    
     <!-- Page de contact-->
    <definition name="contact" extends="base-definition">  
        <put-attribute name="title" value="Contactez-nous" />  

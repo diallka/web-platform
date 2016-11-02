@@ -33,12 +33,6 @@ public class UserConfigController {
     @Autowired
     UserService       userService;
 
-    @RequestMapping( value = { "/", "/accueil" } , method = RequestMethod.GET )
-    public String homePage( final ModelMap model ) {
-        model.addAttribute( "bienvenue", "Bienvenue dans ton espace personnel" );
-        return "accueil";
-    }
-
     //	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
     //	@ResponseBody
     //	public String UserInformations(ModelMap model, Principal principal) {

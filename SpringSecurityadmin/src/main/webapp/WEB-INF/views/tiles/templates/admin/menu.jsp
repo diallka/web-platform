@@ -89,7 +89,7 @@
 		<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav side-nav">
-				<li class="active"><a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+				<li class="active"><a href="/admin_dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
 				<li><a href="javascript:;" data-toggle="collapse" data-target="#utilisateurs"><i class="fa fa-fw fa-users"></i> Utilisateurs<i class="fa fa-fw fa-caret-down"></i></a>
 					<ul id="utilisateurs" class="collapse">
 						<li><a href="/admin/lister"><i class="fa fa-user"></i> Liste</a></li>
