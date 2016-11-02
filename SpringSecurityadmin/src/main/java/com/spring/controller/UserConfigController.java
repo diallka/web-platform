@@ -55,10 +55,10 @@ public class UserConfigController {
         return "db";
     }
 
-    @RequestMapping( value = "/access_refuse" , method = RequestMethod.GET )
+    @RequestMapping( value = "/erreur_403" , method = RequestMethod.GET )
     public String accessRefuse( final ModelMap model ) {
         model.addAttribute( "user", this.getPrincipal() );
-        return "access_refuse";
+        return "erreur_403";
     }
 
     @RequestMapping( value = "/login" , method = RequestMethod.GET )

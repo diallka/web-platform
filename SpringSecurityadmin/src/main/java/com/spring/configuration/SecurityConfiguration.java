@@ -54,6 +54,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/admin_dashboard/**", "/newuser" ).access( "hasRole('ADMIN')" ) //seulement ADMIN
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 .antMatchers( "/db/**" ).access( "hasRole('ADMIN') or hasRole('DBA')" ) //etre ADMIN ou DBA
-                .and().formLogin().loginPage( "/login" ).usernameParameter( "ssoId" ).passwordParameter( "password" ).and().csrf().and().exceptionHandling().accessDeniedPage( "/access_refuse" );
+                .and().formLogin().loginPage( "/login" ).usernameParameter( "ssoId" ).passwordParameter( "password" )
+                .and().csrf()
+                .and().exceptionHandling().accessDeniedPage( "/erreur_403" );
     }
 }

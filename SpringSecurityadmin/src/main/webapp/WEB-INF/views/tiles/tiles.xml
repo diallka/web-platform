@@ -8,7 +8,7 @@
 	 <!-- Page d'authentification -->
    <definition name="login" template="/WEB-INF/views/pages/login.jsp" />  
    <!-- Accès refusé -->
-   <definition  name="access_refuse" template="/WEB-INF/views/pages/access_refuse.jsp" />  
+   <definition  name="erreur_403" template="/WEB-INF/views/pages/erreur_403.jsp" />  
   
 
 <!-- Administrateur********************************************************************* -->
