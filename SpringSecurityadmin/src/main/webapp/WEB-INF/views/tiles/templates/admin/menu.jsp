@@ -10,7 +10,7 @@
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/dashboard"><img src="<c:url value="/static/images/car2.png"/>" /></a>
+			<a class="navbar-brand" href="/admin_dashboard"><img src="<c:url value="/static/images/car2.png"/>" /></a>
 		</div>
 		
 		<!-- Top Menu Items -->

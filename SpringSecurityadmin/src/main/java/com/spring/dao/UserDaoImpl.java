@@ -17,6 +17,8 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
     @Autowired
     private SessionFactory sessionFactory;
 
+    //On déclare les methodes CRUD dans Abstract dao (on les reutilise ou redefinit ici)
+
     @Override
     public void save( final User user ) {
         this.persist( user );
@@ -34,15 +36,6 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
         return (User) crit.uniqueResult();
     }
 
-    //    @SuppressWarnings( "unchecked" )
-    //    @Override
-    //    public List< User > listUsers() {
-    //        final Criteria crit = this.createEntityCriteria();
-    //        //On peut rajouter des criteres
-    //        //crit.add();
-    //        return crit.list();
-    //    }
-
     @SuppressWarnings( "unchecked" )
     @Override
     public List< User > listUsers() {
@@ -58,8 +51,7 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
 
     @Override
     public void updateUser( final User user ) {
-        this.updateUser( user );
-
+        this.update( user );
     }
 
     @Override
@@ -67,7 +59,7 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
         final Session session = this.sessionFactory.getCurrentSession();
         final User user = (User) session.load( User.class, new Integer( id ) );
         if ( null != user ) {
-            session.delete( user );
+            this.delete( user );
         }
 
     }
@@ -77,8 +69,8 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
     public List< User > count() {
         final Session session = this.sessionFactory.getCurrentSession();
         final List< User > result = session.createQuery( "select COUNT(*) from User" ).list();
-        //On teste le retour en console
 
+        //On teste le retour en console
         System.out.println( result.get( 0 ) );
 
         //on renvoit le résultat

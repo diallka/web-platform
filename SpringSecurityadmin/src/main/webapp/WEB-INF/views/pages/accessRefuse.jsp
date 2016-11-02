@@ -8,6 +8,7 @@
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
+Test
 	Dear <strong>${user}</strong>, Vous n'etes pas autorisé à accéder à cette page page.
 	<br/>
 	<a href="<c:url value="/accueil" />">Retourner à l'accueil</a>

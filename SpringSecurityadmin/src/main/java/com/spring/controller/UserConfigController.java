@@ -33,27 +33,6 @@ public class UserConfigController {
     @Autowired
     UserService       userService;
 
-    //	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
-    //	@ResponseBody
-    //	public String UserInformations(ModelMap model, Principal principal) {
-    //		return principal.getName();
-    //	}
-
-    //	@RequestMapping(value = "/espace_perso_utilisateur" , method = RequestMethod.GET)
-    //	public String UserPage(ModelMap model, Principal principal) {
-    //		model.addAttribute("bienvenue", "Bienvenue dans votre espace personnel");
-    //		model.addAttribute("utilisateur", getPrincipal()); //Nous permet de r�cup�rer le prenom de la personne connect�e
-    //		List<Object> principals = sessionRegistry.getAllPrincipals();
-    //		List<String> test = new ArrayList<String>();
-    //		for ( Object principal2: principals){
-    //			 if (principal2 instanceof User) {
-    //				 test.add(((User) principal).getLastName());
-    //			    }
-    //		}
-    //		model.addAttribute("test", test);
-    //		return "espace_utilisateur";
-    //	}
-
     @RequestMapping( value = "/espace_utilisateur" , method = RequestMethod.GET )
     public String UserPage( final ModelMap model , final Model m ) {
         model.addAttribute( "bienvenue", "Bienvenue dans ton espace personnel" );
@@ -94,7 +73,7 @@ public class UserConfigController {
         if ( auth != null ) {
             new SecurityContextLogoutHandler().logout( request, response, auth );
         }
-        return "redirect:/login?deconnecte";
+        return "redirect:/?deconnecte";
     }
 
     @RequestMapping( value = "/newuser" , method = RequestMethod.GET )

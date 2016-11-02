@@ -47,13 +47,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         //.antMatchers("/espace_perso").permitAll()  //ici on autorise tout le monde � y acc�der meme pas connect�
         //.antMatchers("/espace_perso").authenticated() //renvoit sur la page d'authentification quand on rentre l'url
-                .antMatchers( "/", "/accueil" ).permitAll()  //ici on autorise tout le monde � y acc�der meme pas connect�
-        .antMatchers( "/user-dashboard/**" ).access( "hasRole('USER')" ) //seulement ADMIN
-        .antMatchers( "/espace_utilisateur" ).access( "hasRole('USER')" ) //Ne peuvent y acc�der que les utilisateurs avec leur role
-        .antMatchers( "/admin/**", "/lister" ).access( "hasRole('ADMIN')" ) //seulement ADMIN
-        .antMatchers( "/admin_dashboard/**", "/newuser" ).access( "hasRole('ADMIN')" ) //seulement ADMIN
-        //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-        .antMatchers( "/db/**" ).access( "hasRole('ADMIN') or hasRole('DBA')" ) //etre ADMIN ou DBA
-        .and().formLogin().loginPage( "/login" ).usernameParameter( "ssoId" ).passwordParameter( "password" ).and().csrf().and().exceptionHandling().accessDeniedPage( "/access_refuse" );
+        .antMatchers( "/", "/accueil" ).permitAll()  //ici on autorise tout le monde � y acc�der meme pas connect�
+                .antMatchers( "/user_dashboard/**", "/user/**" ).access( "hasRole('USER')" ) //seulement ADMIN
+                .antMatchers( "/espace_utilisateur" ).access( "hasRole('USER')" ) //Ne peuvent y acc�der que les utilisateurs avec leur role
+                .antMatchers( "/admin/**", "/lister" ).access( "hasRole('ADMIN')" ) //seulement ADMIN
+                .antMatchers( "/admin_dashboard/**", "/newuser" ).access( "hasRole('ADMIN')" ) //seulement ADMIN
+                //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+                .antMatchers( "/db/**" ).access( "hasRole('ADMIN') or hasRole('DBA')" ) //etre ADMIN ou DBA
+                .and().formLogin().loginPage( "/login" ).usernameParameter( "ssoId" ).passwordParameter( "password" ).and().csrf().and().exceptionHandling().accessDeniedPage( "/access_refuse" );
     }
 }

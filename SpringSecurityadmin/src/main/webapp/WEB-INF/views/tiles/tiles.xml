@@ -4,12 +4,12 @@
 <tiles-definitions>  
 
 	 <!-- Page accueil -->
-   <definition name="accueil" extends="base-definition">  
-       <put-attribute name="title" value="Bienvenue" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/accueil.jsp" />  
-   </definition>  
+   <definition name="accueil" template="/WEB-INF/views/pages/accueil.jsp" />  
 	 <!-- Page d'authentification -->
    <definition name="login" template="/WEB-INF/views/pages/login.jsp" />  
+   <!-- Accès refusé -->
+   <definition  name="access_refuse" template="/WEB-INF/views/pages/access_refuse.jsp" />  
+  
 
 <!-- Administrateur********************************************************************* -->
 	<!-- PAGE ACCUEIL ADMINISTRATEUR -->
@@ -34,6 +34,10 @@
        <put-attribute name="menu" value="/WEB-INF/views/tiles/templates/user/menu.jsp" />  
        <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/user_index.jsp"/> 
        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/user/footer.jsp" />
+	</definition>
+	<!-- PAGE MAP -->
+	<definition name="user/index" extends="user_dashboard">
+				<put-attribute name="content" value="/WEB-INF/views/pages/user/index.jsp" />
 	</definition>
 	
 	
@@ -107,11 +111,7 @@
 <!-- 		<put-attribute name="body" value="/WEB-INF/views/pages/admin/dashboard.jsp" /> -->
 <!-- 	</definition> -->
     <!-- ************************************************************** -->
-   <!-- Accès refusé -->
-   <definition name="access_refuse" extends="base-definition">  
-       <put-attribute name="title" value="Accès refuse" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/access_refuse.jsp" />  
-   </definition>
+   
    
    <!-- Ajout utilisateur -->
    <definition name="newuser" extends="base-definition">  

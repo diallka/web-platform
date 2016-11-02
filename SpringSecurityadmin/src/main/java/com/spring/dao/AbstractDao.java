@@ -33,6 +33,10 @@ public abstract class AbstractDao < PK extends Serializable , T > {
         this.getSession().persist( entity );
     }
 
+    public void update( final T entity ) {
+        this.getSession().update( entity );
+    }
+
     public void delete( final T entity ) {
         this.getSession().delete( entity );
     }

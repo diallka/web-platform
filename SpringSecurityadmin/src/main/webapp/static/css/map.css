@@ -3,9 +3,9 @@ body {
 }
 
 #map {
-  height: 430px;
+  height: 50%;
   position: relative;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;  /*permet de center la div au milieu de la page */
   border: 1px solid #ddd;
   border-radius: 4px;

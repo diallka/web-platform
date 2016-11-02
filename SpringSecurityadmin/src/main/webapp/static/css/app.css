@@ -81,14 +81,17 @@ body, #mainWrapper, .form-control{
 	color:red;
 }
 
-
+/* image page accueil */
+img {
+	width:100%;
+}
 .success{
   position:fiexd;
-  width:90%;
+  width:200px;
   margin: 0 auto; /*permet de center la div au milieu de la page */
-  margin-top:20px;
+  margin-top:10%;
   padding: 20px;
   background-color: #E8E1E1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
 }

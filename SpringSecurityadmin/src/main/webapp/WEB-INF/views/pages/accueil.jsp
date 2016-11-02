@@ -8,11 +8,14 @@
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 
-<link href="<c:url value='/static/css/map.css' />" rel="stylesheet"></link>
 </head>
 <body>
+<h1 style="color: aqua;"></h1>
 	<div class="success">
-		<h3><center>Bienvenue, Application web en cours de construction... Merci</center></h3>
+		<a href="/user_dashboard" ><img src="<c:url value="/static/images/user.png"/>" /></a> <br/><br/>
+		<a href="/admin_dashboard" ><img src="<c:url value="/static/images/admin.png"/>" /></a>  	
 	</div>
+
+</script>
 </body>
 </html>
