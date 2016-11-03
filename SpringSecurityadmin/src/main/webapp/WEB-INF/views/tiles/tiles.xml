@@ -22,8 +22,8 @@
 	</definition>
 	<!-- PAGE LISTE UTILISATEURS -->
 	<definition name="admin/index" extends="admin_dashboard">
-				<put-attribute name="content" value="/WEB-INF/views/pages/admin/index.jsp" />
-				<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
+					<put-attribute name="content" value="/WEB-INF/views/pages/admin/index.jsp" />
+					<put-attribute name="ajout" value="/WEB-INF/views/pages/admin/ajout.jsp" />
 	</definition>
 	<!-- /Administrateur****************************************************************** -->
 	
@@ -35,10 +35,20 @@
        <put-attribute name="content" value="/WEB-INF/views/pages/dashboard/user_index.jsp"/> 
        <put-attribute name="footer" value="/WEB-INF/views/tiles/templates/user/footer.jsp" />
 	</definition>
+	
+	
 	<!-- PAGE MAP -->
-	<definition name="user/index" extends="user_dashboard">
-				<put-attribute name="content" value="/WEB-INF/views/pages/user/index.jsp" />
+	<definition name="users_map" extends="user_dashboard">
+		<put-attribute name="content" value="/WEB-INF/views/pages/user/map.jsp" />
 	</definition>
+	
+	<!-- PAGE PROFIL --> 
+	<definition name="user_profil" extends="user_dashboard">
+		<put-attribute name="content" value="/WEB-INF/views/pages/user/profil.jsp" />
+	</definition>
+	
+	
+	<!-- PAGE PROFIL -->
 	
 	
 	

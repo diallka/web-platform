@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.model.User;
 import com.spring.service.ProfilUserService;
 import com.spring.service.UserService;
 
@@ -47,8 +48,11 @@ public class DashboardController {
     public ModelAndView user() {
 
         final ModelAndView mv = this.getModelAndView();
+        final User user = this.userService.findBySso( this.getPrincipal() );
         mv.addObject( "titre", "Dashboard Utilisateur" );
-        mv.addObject( "username", this.getPrincipal() );
+        mv.addObject( "firstname", user.getFirstName() );
+        mv.addObject( "age", user.getAge() );
+        mv.addObject( "nombre", this.userService.count().get( 0 ) );
         //mv.addObject( "nombre", this.userService.count().get( 0 ) );
         return mv;
     }

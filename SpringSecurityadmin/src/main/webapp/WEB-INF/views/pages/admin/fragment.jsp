@@ -4,4 +4,4 @@
 
             
              <tiles:insertAttribute name="vue-content" />
-			
+			 <tiles:insertAttribute name="profil-content" />
