@@ -103,7 +103,7 @@
 
 										//detail à revoir
 										details = details + user.lastName + user.latitude + user.longitude
-										console.log( details );
+
 									} );
 								} );
 
