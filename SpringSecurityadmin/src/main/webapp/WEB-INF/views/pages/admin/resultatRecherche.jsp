@@ -1,0 +1,1 @@
+<%@ include file="/WEB-INF/views/pages/admin/liste.jsp" %>
