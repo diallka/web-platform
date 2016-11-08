@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.model.User;
+import com.spring.service.ProfilUserService;
 import com.spring.service.UserService;
 
 @Controller
@@ -19,7 +20,10 @@ import com.spring.service.UserService;
 public class UtilisateursController {
 
     @Autowired
-    UserService userService;
+    UserService       userService;
+
+    @Autowired
+    ProfilUserService userProfileService;
 
     @RequestMapping( value = "/lister" , method = RequestMethod.GET )
     public ModelAndView listerContatcs() {

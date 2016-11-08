@@ -14,7 +14,7 @@ function modifierProfil () {
 			success : function ( response ) {
 				console.log( "success" );
 				// $('#personFormResponse').text(response);
-
+				console.log("action reussi");
 			} ,
 			error : function () {
 				console.log( this );

@@ -9,22 +9,25 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.ProfilUserDao;
 import com.spring.model.ProfilUser;
 
-@Service("userProfileService")
+@Service( "userProfileService" )
 @Transactional
-public class ProfilUserServiceImpl implements ProfilUserService{
-	
-	@Autowired
-	ProfilUserDao dao;
-	
-	public List<ProfilUser> findAll() {
-		return dao.findAll();
-	}
+public class ProfilUserServiceImpl implements ProfilUserService {
 
-	public ProfilUser findByType(String type){
-		return dao.findByType(type);
-	}
+    @Autowired
+    ProfilUserDao dao;
 
-	public ProfilUser findById(int id) {
-		return dao.findById(id);
-	}
+    @Override
+    public List< ProfilUser > findAll() {
+        return this.dao.findAll();
+    }
+
+    @Override
+    public ProfilUser findByType( final String type ) {
+        return this.dao.findByType( type );
+    }
+
+    @Override
+    public ProfilUser findById( final int id ) {
+        return this.dao.findById( id );
+    }
 }

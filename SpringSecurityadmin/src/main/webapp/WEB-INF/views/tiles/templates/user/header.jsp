@@ -28,7 +28,7 @@
 
 
 <!-- jQuery -->
-<script src="<c:url value="/static/admin/js/jquery.js"/>" type="text/javascript"></script>
+
 
 <!--     jQuery -->
 <script src="<c:url value='/static/user/vendor/jquery/jquery.min.js'/>" type="text/javascript"></script>

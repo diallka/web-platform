@@ -6,9 +6,9 @@ import com.spring.model.ProfilUser;
 
 public interface ProfilUserService {
 
-	List<ProfilUser> findAll();
-	
-	ProfilUser findByType(String type);
-	
-	ProfilUser findById(int id);
+    List< ProfilUser > findAll();
+
+    ProfilUser findByType( final String type );
+
+    ProfilUser findById( final int id );
 }

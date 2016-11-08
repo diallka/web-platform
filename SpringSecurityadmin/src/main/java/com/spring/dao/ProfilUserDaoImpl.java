@@ -9,23 +9,26 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.model.ProfilUser;
 
-@Repository("userProfileDao")
-public class ProfilUserDaoImpl extends AbstractDao<Integer, ProfilUser>implements ProfilUserDao{
+@Repository( "userProfileDao" )
+public class ProfilUserDaoImpl extends AbstractDao< Integer , ProfilUser > implements ProfilUserDao {
 
-	@SuppressWarnings("unchecked")
-	public List<ProfilUser> findAll(){
-		Criteria crit = createEntityCriteria();
-		crit.addOrder(Order.asc("type"));
-		return (List<ProfilUser>)crit.list();
-	}
-	
-	public ProfilUser findById(int id) {
-		return getByKey(id);
-	}
-	
-	public ProfilUser findByType(String type) {
-		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("type", type));
-		return (ProfilUser) crit.uniqueResult();
-	}
+    @Override
+    @SuppressWarnings( "unchecked" )
+    public List< ProfilUser > findAll() {
+        final Criteria crit = this.createEntityCriteria();
+        crit.addOrder( Order.asc( "id" ) );
+        return crit.list();
+    }
+
+    @Override
+    public ProfilUser findById( final int id ) {
+        return this.getByKey( id );
+    }
+
+    @Override
+    public ProfilUser findByType( final String type ) {
+        final Criteria crit = this.createEntityCriteria();
+        crit.add( Restrictions.eq( "type", type ) );
+        return (ProfilUser) crit.uniqueResult();
+    }
 }
