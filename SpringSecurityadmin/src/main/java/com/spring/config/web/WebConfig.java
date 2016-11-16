@@ -1,4 +1,4 @@
-package com.spring.configuration;
+package com.spring.config.web;
 
 import java.util.List;
 
@@ -17,10 +17,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.spring.config.ConversionRoleProfilUser;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan( basePackages = "com.spring" )
-public class AppConfiguration extends WebMvcConfigurerAdapter {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     ConversionRoleProfilUser roleToUserProfileConverter;
@@ -49,6 +51,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void configureMessageConverters( final List< HttpMessageConverter< ? >> converters ) {
         final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        @SuppressWarnings( "unused" )
         final ObjectMapper objectMapper = new ObjectMapper();
         //objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         //converter.setObjectMapper(objectMapper);

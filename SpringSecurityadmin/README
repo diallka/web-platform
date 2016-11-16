@@ -1,11 +1,11 @@
-Spring mvc
+Spring boot
 Spring security
 Hibernate
 Mysql
 jsr303 validation
-configuration springSecurity, webmvc, hibernate par annotation
+configuration springSecurity, boot, hibernate par annotation
 
-Tomcat 8 
+Tomcat embarqué
 Java 7 (1.7)
 Servlet (Dynamic Web Module) 3.1
 

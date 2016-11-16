@@ -40,7 +40,8 @@ public class DashboardController {
         final ModelAndView mv = this.getModelAndView();
         mv.addObject( "titre", "Dashboard Administrateur" );
         mv.addObject( "username", this.getPrincipal() );
-        mv.addObject( "nombre", this.userService.count().get( 0 ) );
+        //mv.addObject( "nombre", this.userService.count().get( 0 ) );
+        mv.addObject( "nombre", this.userService.listUsers().size() );
         return mv;
     }
 

@@ -2,7 +2,7 @@ package com.spring.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class GenerateurMotDePasse {
+public class PasswordEncoder {
 
 	/**
 	 * @param args

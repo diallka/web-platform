@@ -1,4 +1,4 @@
-package com.spring.configuration;
+package com.spring.config.hibernate;
 
 import java.util.Properties;
 
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan( { "com.spring.configuration" } )
 @PropertySource( value = { "classpath:application.properties" } )
-public class HibernateConfiguration {
+public class HibernateConfig {
 
     @Autowired
     private Environment environment;

@@ -69,12 +69,21 @@ public class UserDaoImpl extends AbstractDao< Integer , User > implements UserDa
     public List< User > count() {
         final Session session = this.sessionFactory.getCurrentSession();
         final List< User > result = session.createQuery( "select COUNT(*) from User" ).list();
-
         //On teste le retour en console
         System.out.println( result.get( 0 ) );
-
         //on renvoit le résultat
         return result;
+
     }
+
+    //A voir
+    /* try {
+         int compteur = ( (Integer) session.iterate(
+           "select count(*) from User").next() ).intValue();
+         System.out.println("compteur = " + compteur);
+       } finally {
+         session.close();
+       } */
+    // Resultat type int : 3
 
 }
