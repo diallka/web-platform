@@ -93,7 +93,7 @@
 											map : map ,
 											title : '' ,
 											animation : google.maps.Animation.DROP , //Animation marqueurs
-											draggable : false ,
+											draggable : true ,
 											icon : '<c:url value="/static/images/user_f.jpg"/>'
 
 										} );

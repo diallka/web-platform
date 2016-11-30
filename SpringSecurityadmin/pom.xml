@@ -61,11 +61,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<scope>provided</scope>
-		</dependency>
  		<!-- Apache Commons DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -124,6 +119,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet</groupId> -->
+<!-- 			<artifactId>jstl</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 			<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -212,7 +213,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 <!-- 				permet de créer un executable -->
 				<configuration>
-					<executable>true</executable>
+					<executable>false</executable>
 				</configuration>
 			</plugin>
 

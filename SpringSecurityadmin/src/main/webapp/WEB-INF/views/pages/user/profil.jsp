@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-lg-12" align="center">
 			<ol class="breadcrumb">
-				<li class="active  text-uppercase"><i class="fa fa-dashboard"></i> Modifier votre profil</li>
+				<li class="active  text-uppercase"><i class="fa fa-dashboard"></i> Modification profil</li>
 
 			</ol>
 		</div>

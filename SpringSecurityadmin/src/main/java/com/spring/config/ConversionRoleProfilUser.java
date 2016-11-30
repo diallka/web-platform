@@ -21,7 +21,7 @@ public class ConversionRoleProfilUser implements Converter< Object , ProfilUser 
     public ProfilUser convert( final Object element ) {
         final Integer id = Integer.parseInt( (String) element );
         final ProfilUser profil = this.userProfileService.findById( id );
-        System.out.println( "Profile : " + profil );
+        System.out.println( "Profil : " + profil );
         return profil;
     }
 }

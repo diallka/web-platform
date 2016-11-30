@@ -99,16 +99,14 @@ public class UserConfigController {
         System.out.println( "First Name : " + user.getFirstName() );
         System.out.println( "Last Name : " + user.getLastName() );
         System.out.println( "SSO ID : " + user.getSsoId() );
-        System.out.println( "Password : " + user.getPassword() );
-        System.out.println( "Email : " + user.getEmail() );
-        System.out.println( "Checking UsrProfiles...." );
+        System.out.println( "Verification profil...." );
         if ( user.getUserProfiles() != null ) {
             for ( final ProfilUser profile : user.getUserProfiles() ) {
-                System.out.println( "Profile : " + profile.getType() );
+                System.out.println( "Profil : " + profile.getType() );
             }
         }
 
-        model.addAttribute( "success", "L'utilisateur " + user.getFirstName() + " a �t� ajout� avec succ�s" );
+        model.addAttribute( "success", "L'utilisateur " + user.getFirstName() + " a été ajouté avec succès" );
         return "registrationsuccess";
     }
 
