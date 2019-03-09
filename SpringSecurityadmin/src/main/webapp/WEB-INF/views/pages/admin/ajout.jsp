@@ -58,7 +58,7 @@
 		<div class="form-group col-md-4">
 			<label class="col-md-3 control-lable" for="password">Mot de passe</label>
 			<div class="col-md-9">
-				<form:input type="password" path="password" id="password" class="form-control input-sm" />
+				<form:password path="password" id="password" class="form-control input-sm" />
 				<div class="has-error">
 					<form:errors path="password" class="help-inline" />
 				</div>

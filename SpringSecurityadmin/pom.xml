@@ -206,15 +206,50 @@
 		</dependency>
 	</dependencies>
  	<!-- ********************************** -->
+ 	<!-- creer profile pour chaque classe main avant repackage -->
+ 	<profiles>
+	    <profile>
+	        <id>profile1</id>
+	        <properties>
+	          <spring.boot.mainclass>com.spring.StartApp</spring.boot.mainclass>
+	        </properties>
+	    </profile>
+	    <profile>
+	        <id>profile2</id>
+	        <properties>
+	          <spring.boot.mainclass>com.spring.config.PasswordEncoding</spring.boot.mainclass>
+	        </properties>
+	    </profile>
+	    <profile>
+	        <id>profile3</id>
+	        <properties>
+	          <spring.boot.mainclass>com.spring.util.PasswordEncoder</spring.boot.mainclass>
+	        </properties>
+	    </profile>
+	</profiles>
+	<!-- puis package: mvn package -->
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-<!-- 				permet de créer un executable -->
-				<configuration>
-					<executable>false</executable>
-				</configuration>
+<!-- 				permet de créer un executable ou pas -->
+<!-- 				<configuration> -->
+<!-- 					<executable>false</executable> -->
+<!-- 				</configuration> -->
+			<!-- Repachaging si plusieurs classes main -->
+				<version>1.5.2.RELEASE</version>
+			    <executions>
+			      <execution>
+			        <goals>
+			          <goal>repackage</goal>
+			        </goals>
+			        <configuration>
+			          <mainClass>${com.spring.StartApp}</mainClass>
+			        </configuration>
+			      </execution>
+			    </executions>
+			    <!-- Afin de generer war file -->
 			</plugin>
 
 
