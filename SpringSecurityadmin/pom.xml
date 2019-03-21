@@ -49,6 +49,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- ****************** -->
+		<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!-- ****************** -->
 		<!--Fait un audit sur l'Authentification et les autorisations -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -206,7 +216,7 @@
 		</dependency>
 	</dependencies>
  	<!-- ********************************** -->
- 	<!-- creer profile pour chaque classe main avant repackage -->
+ 	<!-- creer profile pour chaque classe main avant bootRepackage qui devient bootJar & bootWar version 2.0	 -->
  	<profiles>
 	    <profile>
 	        <id>profile1</id>
