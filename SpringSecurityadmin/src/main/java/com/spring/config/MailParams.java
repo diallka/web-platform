@@ -12,12 +12,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class MailParams {
 	 
     // Replace with your email here:  
-    public static final String MY_EMAIL = "krymo.gn@gmail.com";
+    public static final String MY_EMAIL = "sender@gmail.com";
  
     // Replace password!!
-    public static final String MY_PASSWORD = "Mamama54!";
+    public static final String MY_PASSWORD = "senderPassword";
  
     // And receiver!
-    public static final String FRIEND_EMAIL = "akdiallo@kubik-consulting.fr";
+    public static final String FRIEND_EMAIL = "receiver@email.com";
  
 }
